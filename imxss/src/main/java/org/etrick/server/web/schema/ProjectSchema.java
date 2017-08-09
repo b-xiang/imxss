@@ -9,8 +9,6 @@ public class ProjectSchema extends ProjectInfo {
 
 	private Integer letterNum;
 	
-	private String unionUrl;
-	
 	private String userEmail;
 	
 	
@@ -23,14 +21,6 @@ public class ProjectSchema extends ProjectInfo {
 		this.userEmail = userEmail;
 	}
 
-	public String getUnionUrl() {
-		return unionUrl;
-	}
-
-	public void setUnionUrl(String unionUrl) {
-		this.unionUrl = unionUrl;
-		unionUrl=unionUrl.replace("&#", "& #");
-	}
 
 	public String getModuleName() {
 		return moduleName;
