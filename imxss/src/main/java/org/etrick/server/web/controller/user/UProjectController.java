@@ -212,7 +212,6 @@ public class UProjectController extends BaseController {
 		}
 		ProjectSchema projectSchema = new ProjectSchema();
 		BeanUtils.copyProperties(project, projectSchema);
-		projectSchema.setUnionUrl(StringUtil.convertToUnicode(project.getSortUri()));
 		setAttribute("projectInfo", projectSchema);
 		// 加载模块定制信息
 		List<ProjectModuleMapping> mappings = projectService.loadProjectMappings(projectId);
