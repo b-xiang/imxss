@@ -89,7 +89,7 @@ public class ProjectService {
 		pager.setPageSize(100);
 		return jdbcHandle.findBean(ProjectInfo.class,where,pager);
 	}
-	@CacheWrite(key = CacheFinal.PROJECT_LIST, fields = { "userInfo.userId"}, validTime = 72000)
+	@CacheWrite(key = CacheFinal.PROJECT_LIST, fields = { "userInfo.id"}, validTime = 72000)
 	public List<ProjectInfo> loadProjects(UserInfo userInfo){
 		Where where=new Where();
 		where.set("userId", userInfo.getId());
