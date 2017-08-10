@@ -43,7 +43,7 @@
 								<div class="am-g">
 									<fieldset>
 										<div class="widget-head am-cf">
-											<p class="page-header-description">当前文件：${file }</p>
+											<p class="page-header-description">当前文件：<a href="#">${file }</a></p>
 										</div>
 									</fieldset>
 									<fieldset>
