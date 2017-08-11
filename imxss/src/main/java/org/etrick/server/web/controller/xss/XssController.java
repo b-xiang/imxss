@@ -23,6 +23,7 @@ import org.etrick.server.web.domain.ProjectInfo;
 import org.etrick.server.web.domain.ProjectModuleMapping;
 import org.etrick.server.web.domain.UserInfo;
 import org.etrick.server.web.service.EmailService;
+import org.etrick.server.web.service.IpService;
 import org.etrick.server.web.service.LetterService;
 import org.etrick.server.web.service.ModuleService;
 import org.etrick.server.web.service.ProjectService;
@@ -44,6 +45,8 @@ public class XssController extends BaseController {
 	SuffixService suffixService;
 	@Resource
 	LetterService letterService;
+	@Resource
+	IpService ipService;
 	@Resource
 	UserService userService;
 	@Resource
@@ -161,6 +164,8 @@ public class XssController extends BaseController {
 					// TODO: handle exception
 				}
 			}
+			//初始化IP地址信息
+			ipService.loadIpInfo(ip);
 			// 发送邮件
 			if (project.getOpenEmail() == null || project.getOpenEmail() != 1) {
 				return;

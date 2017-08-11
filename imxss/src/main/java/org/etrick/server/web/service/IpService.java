@@ -48,18 +48,23 @@ public class IpService {
 	
 	@CacheWrite(key=CacheFinal.IP_INFO,validTime=7200000,fields="ip")
 	public AddressInfo loadIpInfo(String ip){
-		AddressInfo info=jdbcHandle.findBeanFirst(AddressInfo.class,"ip",ip);
-		if(info!=null&&!StringUtil.isNullOrEmpty(info.getCountry())){
-			return info;
-		}
-		IpSearchThreadHandle.ipThreadPool.execute(new Runnable() {
-			@Override
-			public void run() {
-				IpService ipService=SpringContextHelper.getBean(IpService.class);
-				ipService.loadAddress(ip);
+		try {
+			AddressInfo info=jdbcHandle.findBeanFirst(AddressInfo.class,"ip",ip);
+			if(info!=null&&!StringUtil.isNullOrEmpty(info.getCountry())){
+				return info;
 			}
-		});
-		return info;
+			IpSearchThreadHandle.ipThreadPool.execute(new Runnable() {
+				@Override
+				public void run() {
+					IpService ipService=SpringContextHelper.getBean(IpService.class);
+					ipService.loadAddress(ip);
+				}
+			});
+			return info;
+		} catch (Exception e) {
+			PrintException.printException(logger, e);
+			return null;
+		}
 	}
 	@CacheWipe(key=CacheFinal.IP_INFO,fields="ip")
 	public void  loadAddress(String ip){
