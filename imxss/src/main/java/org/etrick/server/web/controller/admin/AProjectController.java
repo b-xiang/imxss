@@ -118,7 +118,6 @@ public class AProjectController extends BaseController{
 			}
 			setAttribute("mappings", schemas);
 		}
-
 		return "admin/project/project_edit";
 	}
 	
