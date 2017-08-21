@@ -32,7 +32,6 @@ public class AEmailController extends BaseController{
 		keepParas();
 		return "admin/email/email_list";
 	}
-	
 	@RequestMapping("/emailEdit")
 	@Power("emailManage")
 	public String emailEdit(){
