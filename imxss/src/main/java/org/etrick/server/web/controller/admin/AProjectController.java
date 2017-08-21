@@ -167,8 +167,6 @@ public class AProjectController extends BaseController{
 	
 	
 	
-	
-	
 	@RequestMapping("/projectModuleCustom")
 	@Power("projectManage")
 	public String projectModuleCustom(Integer projectId) {
