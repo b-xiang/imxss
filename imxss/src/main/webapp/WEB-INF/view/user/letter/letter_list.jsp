@@ -53,7 +53,7 @@
 									<div class="am-form-group">
 										<select data-am-selected="{btnSize: 'sm'}"
 											style="display: none;" name="projectId">
-											<option>所有项目</option>
+											<option value="0">所有项目</option>
 											<c:forEach items="${projects }" var="project">
 												<option value="${project.id }" ${project.id==projectId?'selected':'' }>${project.title }</option>
 											</c:forEach>
