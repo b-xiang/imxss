@@ -6,7 +6,6 @@
 <head>
 <jsp:include page="../includ/header.jsp" />
 </head>
-
 <body data-type="index">
 
 
