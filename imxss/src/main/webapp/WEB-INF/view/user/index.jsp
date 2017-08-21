@@ -8,7 +8,6 @@
 </head>
 <body data-type="index">
 
-
 	<header class="am-topbar am-topbar-inverse admin-header">
 		<jsp:include page="../includ/nav.jsp" />
 	</header>
