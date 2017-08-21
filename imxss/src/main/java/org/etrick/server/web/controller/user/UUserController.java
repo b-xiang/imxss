@@ -83,7 +83,6 @@ public class UUserController extends BaseController {
 		if (userInfo == null) {
 			return new MsgEntity(-1, "用户不存在");
 		}
-
 		if (!userInfo.getUserPwd().equals(EncryptUtil.customEnCode(userPwd))) {
 			return new MsgEntity(-1, "密码不正确");
 		}
