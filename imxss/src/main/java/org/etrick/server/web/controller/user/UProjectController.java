@@ -228,7 +228,6 @@ public class UProjectController extends BaseController {
 			}
 			setAttribute("mappings", schemas);
 		}
-
 		return "user/project/project_edit";
 	}
 
