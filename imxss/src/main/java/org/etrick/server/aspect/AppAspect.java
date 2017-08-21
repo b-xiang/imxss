@@ -13,6 +13,7 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.aspectj.util.GenericSignature.ClassSignature;
 import org.etrick.server.comm.annotation.CacheWipe;
 import org.etrick.server.comm.annotation.CacheWrite;
 import org.etrick.server.comm.annotation.DateSource;
@@ -108,6 +109,7 @@ public class AppAspect {
 			// AOP获取方法执行信息
 			Signature signature = pjp.getSignature();
 			MethodSignature methodSignature = (MethodSignature) signature;
+			Class<?> clazz=pjp.getTarget().getClass();
 			Method method = methodSignature.getMethod();
 			if (method == null) {
 				return pjp.proceed();
@@ -122,7 +124,7 @@ public class AppAspect {
 			String key = handle.key();
 			try {
 				if (StringUtil.isNullOrEmpty(key)) {
-					key = AspectUtil.getMethodCacheKey(method);
+					key = AspectUtil.getMethodCacheKey(clazz,method);
 				}
 				if (StringUtil.isNullOrEmpty(handle.fields())) {
 					String paraKey=AspectUtil.getBeanKey(paras);
@@ -132,7 +134,7 @@ public class AppAspect {
 					}
 				}
 				if (!StringUtil.isNullOrEmpty(handle.fields())) {
-					key = AspectUtil.getFieldKey(method, paras, key,
+					key = AspectUtil.getFieldKey(clazz,method, paras, key,
 							handle.fields());
 				}
 			} catch (Exception e) {
@@ -179,6 +181,7 @@ public class AppAspect {
 			sw.start(pjp.getSignature().toShortString());
 			Signature signature = pjp.getSignature();
 			MethodSignature methodSignature = (MethodSignature) signature;
+			Class<?> clazz=pjp.getTarget().getClass();
 			Method method = methodSignature.getMethod();
 			if (method == null) {
 				return pjp.proceed();
@@ -193,10 +196,10 @@ public class AppAspect {
 				try {
 					String key = handle.key();
 					if (StringUtil.isNullOrEmpty(handle.key())) {
-						key = (AspectUtil.getMethodCacheKey(method));
+						key = (AspectUtil.getMethodCacheKey(clazz,method));
 					}
 					if (!StringUtil.isNullOrEmpty(handle.fields())) {
-						key = AspectUtil.getFieldKey(method, paras, key,
+						key = AspectUtil.getFieldKey(clazz,method, paras, key,
 								handle.fields());
 					}
 					logger.debug("删除缓存:"+key);
@@ -264,10 +267,10 @@ public class AppAspect {
 			// AOP获取方法执行信息
 			Signature signature = pjp.getSignature();
 			MethodSignature methodSignature = (MethodSignature) signature;
-			Class<?> clazz = methodSignature.getDeclaringType();
+			Class<?> clazz=pjp.getTarget().getClass();
 			Method method = methodSignature.getMethod();
 			PropertUtil.setProperties(method, "clazz", clazz);
-			String key = SimpleUtil.getMethodKey(method);
+			String key = SimpleUtil.getMethodKey(clazz,method);
 			if (LocalCache.contains(key)) {
 				Object[] args = pjp.getArgs();
 				Date runTime = new Date();

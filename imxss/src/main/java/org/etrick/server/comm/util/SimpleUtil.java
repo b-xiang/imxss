@@ -31,23 +31,6 @@ import com.alibaba.fastjson.JSON;
 
 public class SimpleUtil {
 
-	public static String getMethodKey(Method method) {
-		StringBuilder sb = new StringBuilder();
-		Class<?> clazz = PropertUtil.getClass(method);
-		sb.append(clazz.getName()).append(".").append(method.getName());
-		Class<?>[] paraTypes = method.getParameterTypes();
-		sb.append("(");
-		if (!StringUtil.isNullOrEmpty(paraTypes)) {
-			for (int i = 0; i < paraTypes.length; i++) {
-				sb.append(paraTypes[i].getName());
-				if (i < paraTypes.length - 1) {
-					sb.append(",");
-				}
-			}
-		}
-		sb.append(")");
-		return CacheFinal.SYSTEM_RUN_INFO + "-" + sb.toString();
-	}
 
 	public static String getMethodKey(Class<?> clazz, Method method) {
 		StringBuilder sb = new StringBuilder();
@@ -81,7 +64,7 @@ public class SimpleUtil {
 				PropertUtil.setFieldValues(methods, "clazz", clazz);
 			}
 			for (Method method : methods) {
-				String methodKey=getMethodKey(method);
+				String methodKey=getMethodKey(clazz,method);
 				if (key.equals(methodKey)) {
 					return method;
 				}
@@ -260,6 +243,7 @@ public class SimpleUtil {
 			if (StringUtil.isNullOrEmpty(types)) {
 				return null;
 			}
+			System.out.println(method.getName());
 			List<String> paraNames=PropertUtil.getMethodParaNames(method);
 			if (StringUtil.isNullOrEmpty(paraNames)) {
 				return null;
@@ -324,7 +308,7 @@ public class SimpleUtil {
 			ctMethod.setIsAbstract(Modifier.isAbstract(method.getModifiers()));
 			ctMethod.setIsSynchronized(Modifier.isSynchronized(method
 					.getModifiers()));
-			ctMethod.setKey(getMethodKey(method));
+			ctMethod.setKey(getMethodKey(clazz,method));
 			ctMethods.add(ctMethod);
 		}
 		if(!StringUtil.isNullOrEmpty(ctMethods)){
@@ -380,7 +364,7 @@ public class SimpleUtil {
 		if (!StringUtil.isNullOrEmpty(clazz.getSuperclass())) {
 			List<Method> methodTmps = loadMethods(clazz.getSuperclass());
 			if (!StringUtil.isNullOrEmpty(methodTmps)) {
-				PropertUtil.setFieldValues(methodTmps, "clazz", clazz);
+				//PropertUtil.setFieldValues(methodTmps, "clazz", clazz);
 				methods.addAll(methodTmps);
 			}
 		}
