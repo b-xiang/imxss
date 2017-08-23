@@ -11,7 +11,7 @@
 	<context:annotation-config />
 	<!-- 对${}形式的占位符进行属性替换 -->
 	<bean id="propertyPlaceholderConfigurer"
-		class="org.etrick.server.comm.comfig.CustomizedPropertyConfigurer">
+		class="org.etrick.framework.context.config.CustomizedPropertyConfigurer">
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
 			<list>
