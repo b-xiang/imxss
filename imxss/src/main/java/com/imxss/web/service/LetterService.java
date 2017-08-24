@@ -36,7 +36,7 @@ public class LetterService {
 			where.set("userId", userId);
 		}
 		if(!StringUtil.isNullOrEmpty(keyWorld)){
-			where.set("title", "like","%"+keyWorld+"%");
+			where.set("refUrl", "like","%"+keyWorld+"%");
 		}
 		if(projectId!=null&&projectId!=0){
 			where.set("projectId", projectId);
