@@ -78,7 +78,7 @@ public class AspectUtil {
 	}
 
 	public static String getMethodCacheKey(Class<?> clazz,Method method){
-		String key=SimpleUtil.getMethodKey(clazz,method);
+		String key=SimpleUtil.getMethodCacheKey(clazz,method);
 		key=key.replace(".", "_");
 		key=key.replace(",", "_");
 		return key;
