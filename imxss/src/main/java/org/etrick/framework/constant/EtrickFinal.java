@@ -22,7 +22,11 @@ public class EtrickFinal {
 	 */
 	public static final String SYSTEM_RUN_INFO="SYSTEM_RUN_INFO";
 	
-
+	
+	/**
+	 * 系统方法缓存
+	 */
+	public static final String METHOD_CACHE_KEY="METHOD_CACHE_KEY";
 	/**
 	 * 在线DEBUG容器
 	 */
