@@ -2,9 +2,9 @@ package com.imxss.web.service;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.CacheWipe;
-import org.etrick.framework.context.annotation.CacheWrite;
-import org.etrick.framework.core.jdbc.JdbcHandle;
+import org.coody.framework.context.annotation.CacheWipe;
+import org.coody.framework.context.annotation.CacheWrite;
+import org.coody.framework.core.jdbc.JdbcHandle;
 import org.springframework.stereotype.Service;
 
 import com.imxss.web.constant.CacheFinal;

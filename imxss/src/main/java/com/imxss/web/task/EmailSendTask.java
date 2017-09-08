@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.LogHead;
-import org.etrick.framework.core.thread.ThreadBlockHandle;
+import org.coody.framework.context.annotation.LogHead;
+import org.coody.framework.core.thread.ThreadBlockHandle;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

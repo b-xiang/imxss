@@ -7,16 +7,16 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.CacheWipe;
-import org.etrick.framework.context.annotation.CacheWrite;
-import org.etrick.framework.context.base.BaseLogger;
-import org.etrick.framework.context.entity.HttpEntity;
-import org.etrick.framework.core.jdbc.JdbcHandle;
-import org.etrick.framework.core.thread.IpSearchThreadHandle;
-import org.etrick.framework.util.HttpUtil;
-import org.etrick.framework.util.PrintException;
-import org.etrick.framework.util.SpringContextHelper;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.context.annotation.CacheWipe;
+import org.coody.framework.context.annotation.CacheWrite;
+import org.coody.framework.context.base.BaseLogger;
+import org.coody.framework.context.entity.HttpEntity;
+import org.coody.framework.core.jdbc.JdbcHandle;
+import org.coody.framework.core.thread.IpSearchThreadHandle;
+import org.coody.framework.util.HttpUtil;
+import org.coody.framework.util.PrintException;
+import org.coody.framework.util.SpringContextHelper;
+import org.coody.framework.util.StringUtil;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;

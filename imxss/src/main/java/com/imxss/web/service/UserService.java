@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.CacheWipe;
-import org.etrick.framework.context.annotation.CacheWrite;
-import org.etrick.framework.context.entity.Pager;
-import org.etrick.framework.context.entity.Where;
-import org.etrick.framework.core.jdbc.JdbcHandle;
-import org.etrick.framework.core.thread.SysThreadHandle;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.context.annotation.CacheWipe;
+import org.coody.framework.context.annotation.CacheWrite;
+import org.coody.framework.context.entity.Pager;
+import org.coody.framework.context.entity.Where;
+import org.coody.framework.core.jdbc.JdbcHandle;
+import org.coody.framework.core.thread.SysThreadHandle;
+import org.coody.framework.util.StringUtil;
 import org.springframework.stereotype.Service;
 
 import com.imxss.web.constant.CacheFinal;
@@ -18,7 +18,7 @@ import com.imxss.web.domain.ProjectInfo;
 import com.imxss.web.domain.UserInfo;
 
 /**
- * @author etrick
+ * @author coody
  * @date 2017年7月11日
  * @blog http://54sb.org
  * @email 644556636@qq.com

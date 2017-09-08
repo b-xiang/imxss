@@ -2,9 +2,9 @@ package com.imxss.web.service;
 
 import java.util.Map;
 
-import org.etrick.framework.context.annotation.CacheWrite;
-import org.etrick.framework.context.entity.HttpEntity;
-import org.etrick.framework.util.HttpUtil;
+import org.coody.framework.context.annotation.CacheWrite;
+import org.coody.framework.context.entity.HttpEntity;
+import org.coody.framework.util.HttpUtil;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
