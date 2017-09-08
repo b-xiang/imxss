@@ -1,6 +1,6 @@
 package com.imxss.web.constant;
 
-import org.etrick.framework.constant.ParaCheckFinal;
+import org.coody.framework.constant.ParaCheckFinal;
 
 public class FormatFinal {
 	//验证用户名
