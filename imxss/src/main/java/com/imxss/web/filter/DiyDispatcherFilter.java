@@ -15,10 +15,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.etrick.framework.context.wrapper.XssHttpServletRequestWrapper;
-import org.etrick.framework.util.RequestUtil;
-import org.etrick.framework.util.SpringContextHelper;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.context.wrapper.XssHttpServletRequestWrapper;
+import org.coody.framework.util.RequestUtil;
+import org.coody.framework.util.SpringContextHelper;
+import org.coody.framework.util.StringUtil;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import com.imxss.web.domain.SettingInfo;
