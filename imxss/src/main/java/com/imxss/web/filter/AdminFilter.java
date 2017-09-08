@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import org.etrick.framework.util.RequestUtil;
+import org.coody.framework.util.RequestUtil;
 
 public class AdminFilter implements Filter {
 
