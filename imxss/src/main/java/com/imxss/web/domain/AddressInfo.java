@@ -1,7 +1,7 @@
 package com.imxss.web.domain;
 
-import org.etrick.framework.context.base.BaseModel;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.context.base.BaseModel;
+import org.coody.framework.util.StringUtil;
 
 @SuppressWarnings("serial")
 public class AddressInfo extends BaseModel {

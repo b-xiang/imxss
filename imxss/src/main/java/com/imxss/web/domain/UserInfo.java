@@ -5,10 +5,10 @@ package com.imxss.web.domain;
 
 import java.util.Date;
 
-import org.etrick.framework.context.base.BaseModel;
+import org.coody.framework.context.base.BaseModel;
 
 /**
- * @author etrick
+ * @author coody
  * @date 2017年7月11日
  * @blog http://54sb.org
  * @email 644556636@qq.com

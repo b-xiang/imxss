@@ -1,7 +1,7 @@
 package com.imxss.web.domain;
 // default package
 
-import org.etrick.framework.context.base.BaseModel;
+import org.coody.framework.context.base.BaseModel;
 
 /**
  * SysMenus entity. @author MyEclipse Persistence Tools
