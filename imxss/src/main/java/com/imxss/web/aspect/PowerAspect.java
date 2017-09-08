@@ -8,13 +8,13 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.etrick.framework.context.annotation.Power;
-import org.etrick.framework.context.base.BaseLogger;
-import org.etrick.framework.context.entity.MsgEntity;
-import org.etrick.framework.util.PropertUtil;
-import org.etrick.framework.util.RequestUtil;
-import org.etrick.framework.util.SpringContextHelper;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.context.annotation.Power;
+import org.coody.framework.context.base.BaseLogger;
+import org.coody.framework.context.entity.MsgEntity;
+import org.coody.framework.util.PropertUtil;
+import org.coody.framework.util.RequestUtil;
+import org.coody.framework.util.SpringContextHelper;
+import org.coody.framework.util.StringUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +30,7 @@ public class PowerAspect {
 	
 	private final BaseLogger logger = BaseLogger.getLoggerPro(this.getClass());
 
-	@Around("@annotation(org.etrick.framework.context.annotation.Power)")
+	@Around("@annotation(org.coody.framework.context.annotation.Power)")
 	public Object bPpowerMonitor(ProceedingJoinPoint pjp) throws Throwable {
 		StopWatch sw = new StopWatch(getClass().getSimpleName());
 		try {
