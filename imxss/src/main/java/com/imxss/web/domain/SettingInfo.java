@@ -1,6 +1,6 @@
 package com.imxss.web.domain;
 
-import org.etrick.framework.context.base.BaseModel;
+import org.coody.framework.context.base.BaseModel;
 
 /**
  * 设置 Setting entity. @author MyEclipse Persistence Tools

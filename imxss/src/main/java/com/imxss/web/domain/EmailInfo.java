@@ -3,11 +3,11 @@
  */
 package com.imxss.web.domain;
 
-import org.etrick.framework.context.base.BaseModel;
+import org.coody.framework.context.base.BaseModel;
 import org.springframework.stereotype.Service;
 
 /**
- * @author etrick
+ * @author coody
  * @date 2017年7月11日
  * @blog http://54sb.org
  * @email 644556636@qq.com

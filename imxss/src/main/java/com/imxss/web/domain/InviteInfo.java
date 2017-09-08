@@ -2,7 +2,7 @@ package com.imxss.web.domain;
 
 import java.util.Date;
 
-import org.etrick.framework.context.base.BaseModel;
+import org.coody.framework.context.base.BaseModel;
 
 
 @SuppressWarnings("serial")
