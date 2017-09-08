@@ -2,9 +2,9 @@ package com.imxss.web.controller.admin;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.Power;
-import org.etrick.framework.context.entity.MsgEntity;
-import org.etrick.framework.core.controller.BaseController;
+import org.coody.framework.context.annotation.Power;
+import org.coody.framework.context.entity.MsgEntity;
+import org.coody.framework.core.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

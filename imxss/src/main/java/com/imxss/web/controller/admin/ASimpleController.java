@@ -12,28 +12,28 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.etrick.framework.constant.EtrickFinal;
-import org.etrick.framework.context.annotation.LogHead;
-import org.etrick.framework.context.annotation.Power;
-import org.etrick.framework.context.base.BaseLogger;
-import org.etrick.framework.context.entity.BeanEntity;
-import org.etrick.framework.context.entity.CacheEntity;
-import org.etrick.framework.context.entity.CtBeanEntity;
-import org.etrick.framework.context.entity.CtClassEntity;
-import org.etrick.framework.context.entity.CtMethodEntity;
-import org.etrick.framework.context.entity.MonitorEntity;
-import org.etrick.framework.context.entity.MsgEntity;
-import org.etrick.framework.context.entity.WsFileEntity;
-import org.etrick.framework.core.cache.LocalCache;
-import org.etrick.framework.core.controller.BaseController;
-import org.etrick.framework.core.system.SystemHandle;
-import org.etrick.framework.util.AspectUtil;
-import org.etrick.framework.util.FileUtils;
-import org.etrick.framework.util.PrintException;
-import org.etrick.framework.util.PropertUtil;
-import org.etrick.framework.util.SimpleUtil;
-import org.etrick.framework.util.SpringContextHelper;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.constant.GeneralFinal;
+import org.coody.framework.context.annotation.LogHead;
+import org.coody.framework.context.annotation.Power;
+import org.coody.framework.context.base.BaseLogger;
+import org.coody.framework.context.entity.BeanEntity;
+import org.coody.framework.context.entity.CacheEntity;
+import org.coody.framework.context.entity.CtBeanEntity;
+import org.coody.framework.context.entity.CtClassEntity;
+import org.coody.framework.context.entity.CtMethodEntity;
+import org.coody.framework.context.entity.MonitorEntity;
+import org.coody.framework.context.entity.MsgEntity;
+import org.coody.framework.context.entity.WsFileEntity;
+import org.coody.framework.core.cache.LocalCache;
+import org.coody.framework.core.controller.BaseController;
+import org.coody.framework.core.system.SystemHandle;
+import org.coody.framework.util.AspectUtil;
+import org.coody.framework.util.FileUtils;
+import org.coody.framework.util.PrintException;
+import org.coody.framework.util.PropertUtil;
+import org.coody.framework.util.SimpleUtil;
+import org.coody.framework.util.SpringContextHelper;
+import org.coody.framework.util.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -151,7 +151,7 @@ public class ASimpleController extends BaseController {
 		/**
 		 * 加载我的监听列表
 		 */
-		List<String> keys = LocalCache.getKeysFuzz(EtrickFinal.SYSTEM_RUN_INFO);
+		List<String> keys = LocalCache.getKeysFuzz(GeneralFinal.SYSTEM_RUN_INFO);
 		setAttribute("keys", keys);
 		return "/admin/simple/monitor_list";
 	}

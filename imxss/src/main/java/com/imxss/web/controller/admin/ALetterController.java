@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.Power;
-import org.etrick.framework.context.entity.MsgEntity;
-import org.etrick.framework.context.entity.Pager;
-import org.etrick.framework.core.controller.BaseController;
-import org.etrick.framework.util.PropertUtil;
-import org.etrick.framework.util.StringUtil;
+import org.coody.framework.context.annotation.Power;
+import org.coody.framework.context.entity.MsgEntity;
+import org.coody.framework.context.entity.Pager;
+import org.coody.framework.core.controller.BaseController;
+import org.coody.framework.util.PropertUtil;
+import org.coody.framework.util.StringUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
