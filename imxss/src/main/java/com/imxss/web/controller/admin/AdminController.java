@@ -9,12 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import org.etrick.framework.context.entity.MsgEntity;
-import org.etrick.framework.core.controller.BaseController;
-import org.etrick.framework.util.EncryptUtil;
-import org.etrick.framework.util.RequestUtil;
-import org.etrick.framework.util.StringUtil;
-import org.etrick.framework.util.VerificationCodeUtil;
+import org.coody.framework.context.entity.MsgEntity;
+import org.coody.framework.core.controller.BaseController;
+import org.coody.framework.util.EncryptUtil;
+import org.coody.framework.util.RequestUtil;
+import org.coody.framework.util.StringUtil;
+import org.coody.framework.util.VerificationCodeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
