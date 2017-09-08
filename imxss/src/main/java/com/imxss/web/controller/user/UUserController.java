@@ -7,15 +7,15 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
-import org.etrick.framework.context.annotation.Power;
-import org.etrick.framework.context.entity.MsgEntity;
-import org.etrick.framework.core.cache.LocalCache;
-import org.etrick.framework.core.controller.BaseController;
-import org.etrick.framework.util.EmailSenderUtil;
-import org.etrick.framework.util.EncryptUtil;
-import org.etrick.framework.util.RequestUtil;
-import org.etrick.framework.util.StringUtil;
-import org.etrick.framework.util.UploadUtil;
+import org.coody.framework.context.annotation.Power;
+import org.coody.framework.context.entity.MsgEntity;
+import org.coody.framework.core.cache.LocalCache;
+import org.coody.framework.core.controller.BaseController;
+import org.coody.framework.util.EmailSenderUtil;
+import org.coody.framework.util.EncryptUtil;
+import org.coody.framework.util.RequestUtil;
+import org.coody.framework.util.StringUtil;
+import org.coody.framework.util.UploadUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +36,7 @@ import com.imxss.web.service.SettingService;
 import com.imxss.web.service.UserService;
 
 /**
- * @author etrick
+ * @author coody
  * @date 2017年7月11日
  * @blog http://54sb.org
  * @email 644556636@qq.com
