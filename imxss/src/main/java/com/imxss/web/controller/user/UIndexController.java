@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
-import org.etrick.framework.core.controller.BaseController;
-import org.etrick.framework.util.PropertUtil;
+import org.coody.framework.core.controller.BaseController;
+import org.coody.framework.util.PropertUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
