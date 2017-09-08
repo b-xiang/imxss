@@ -1,4 +1,4 @@
-<%@page import="org.etrick.framework.util.DateUtils"%>
+<%@page import="org.coody.framework.util.DateUtils"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
