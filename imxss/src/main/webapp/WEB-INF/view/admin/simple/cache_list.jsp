@@ -1,6 +1,6 @@
-<%@page import="org.etrick.framework.util.DateUtils"%>
+<%@page import="org.coody.framework.util.DateUtils"%>
 <%@page import="java.util.Date"%>
-<%@page import="org.etrick.framework.core.system.SystemHandle"%>
+<%@page import="org.coody.framework.core.system.SystemHandle"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="/WEB-INF/tld/c.tld"%>
