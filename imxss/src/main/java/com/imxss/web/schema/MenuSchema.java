@@ -2,7 +2,7 @@ package com.imxss.web.schema;
 
 import java.util.List;
 
-import org.etrick.framework.context.base.BaseModel;
+import org.coody.framework.context.base.BaseModel;
 
 @SuppressWarnings("serial")
 public class MenuSchema extends BaseModel{
