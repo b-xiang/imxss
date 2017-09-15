@@ -61,7 +61,7 @@ public class JdbcHandle {
 	private List<Map<String, Object>> baseQuery(String sql, Object... paras) {
 		Long threadId = Thread.currentThread().getId();
 		try {
-			logger.error("[线程ID："+threadId+"][执行语句:"+parseParams(sql, paras)+"]");
+			logger.debug("[线程ID："+threadId+"][执行语句:"+parseParams(sql, paras)+"]");
 			List<Map<String, Object>> result= jdbcTemplate.queryForList(sql, paras);
 			return result;
 		} catch (Exception e) {
