@@ -60,7 +60,7 @@ public class WallFilter implements Filter {
 		}
 		if(num>600){
 			LocalCache.setCache(key, 600,60*60*24);
-			logger.error("IP:"+ip+"在系统黑名单，已禁止访问");
+			logger.info("IP:"+ip+"在系统黑名单，已禁止访问");
 			//销毁session
 			request.getSession().invalidate();
 			ShellQueue.writeWallIp(ip);
