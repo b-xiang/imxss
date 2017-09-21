@@ -194,4 +194,6 @@ public class CacheFinal {
 	 */
 	public static final String INVITE_LIST="INVITE_LIST";
 	
+	public static final String WALL_IP_CACHE="WALL_IP_CACHE";
+	
 }
