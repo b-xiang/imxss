@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.PriorityBlockingQueue;
 
 import org.coody.framework.context.base.BaseLogger;
 import org.coody.framework.util.PrintException;
@@ -35,7 +34,7 @@ public class ShellQueue {
 	@Scheduled(cron="0/1 * * * * ? ")
 	public void writeWall() throws InterruptedException{
 		String ip=ipQueue.poll();
-		logger.debug("防火墙运行中：");
+		logger.info("防火墙运行中：");
 		while(!StringUtil.isNullOrEmpty(ip)){
 			try {
 				String shell=MessageFormat.format("iptables -I INPUT -s {0} -j DROP", ip);
