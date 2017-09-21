@@ -35,7 +35,7 @@ public class ShellQueue {
 	@Scheduled(cron="0/1 * * * * ? ")
 	public void writeWall() throws InterruptedException{
 		String ip=ipQueue.poll();
-		logger.info("防火墙运行中：");
+		logger.debug("防火墙运行中：");
 		while(!StringUtil.isNullOrEmpty(ip)){
 			try {
 				String shell=MessageFormat.format("iptables -I INPUT -s {0} -j DROP", ip);
