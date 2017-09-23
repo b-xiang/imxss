@@ -29,7 +29,6 @@ public class ShellQueue {
 		} catch (Exception e) {
 			PrintException.printException(logger, e);
 		}	
-		
 	}
 	
 	@Scheduled(cron="0/1 * * * * ? ")
