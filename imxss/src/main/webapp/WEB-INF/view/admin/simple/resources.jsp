@@ -36,10 +36,6 @@
 					</div>
 				</div>
 				<div class="tpl-block">
-
-
-
-
 					<div class="am-g">
 						<div class="am-u-sm-12">
 							<table 
