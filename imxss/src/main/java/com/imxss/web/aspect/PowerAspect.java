@@ -72,6 +72,8 @@ public class PowerAspect {
 			//方法执行完毕，刷新菜单
 			List<MenuSchema> menuSchemas= menuService.parseMenus(menus);
 			RequestUtil.getRequest().setAttribute("menus", menuSchemas);
+			String uri= RequestUtil.getRequestURI(RequestUtil.getRequest());
+			RequestUtil.getRequest().setAttribute("uri", uri);
 			return result;
 		} finally {
 			sw.stop();
