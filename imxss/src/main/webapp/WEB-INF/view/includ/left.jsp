@@ -6,7 +6,7 @@
 <div class="tpl-left-nav-list">
 	<ul class="tpl-left-nav-menu">
 		<c:forEach items="${menus }" var="menu" varStatus="index">
-			<li class="tpl-left-nav-item"><a href="#" id="menu${index.index }
+			<li class="tpl-left-nav-item"><a href="#" id="menu${index.index }"
 				class="nav-link tpl-left-nav-link-list"> <i
 					class="am-icon-wpforms"></i> <span>${menu.title }</span> <i
 					class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
