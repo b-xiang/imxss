@@ -5,7 +5,7 @@
 <div class="tpl-left-nav-title">功能列表</div>
 <div class="tpl-left-nav-list">
 	<ul class="tpl-left-nav-menu">
-		<c:forEach items="${menus }" var="menu">
+		<c:forEach items="${menus }" var="menu" varStatus="index">
 			<li class="tpl-left-nav-item"><a href="#" id="menu${index.index }
 				class="nav-link tpl-left-nav-link-list"> <i
 					class="am-icon-wpforms"></i> <span>${menu.title }</span> <i
