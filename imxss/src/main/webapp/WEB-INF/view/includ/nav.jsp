@@ -23,7 +23,7 @@
 		<li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
 			<a class="am-dropdown-toggle tpl-header-list-link"
 			href="javascript:;"> <span
-				class="tpl-header-list-user-nick">${curr_login_user.nickName==null?curr_login_user.email:curr_login_user.nickName }(${curr_login_user.roleId==0?'平台会员':'管理员' })</span><span
+				class="tpl-header-list-user-nick">${curr_login_user.nickName==null?curr_login_user.email:curr_login_user.nickName }</span><span
 				class="tpl-header-list-user-ico"> <img
 					src="${curr_login_user.logo }"
 					onerror="this.src='${basePath}assets/img/userDefault.png'"></span>
