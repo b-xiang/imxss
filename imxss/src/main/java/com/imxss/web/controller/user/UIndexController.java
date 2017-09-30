@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.imxss.web.domain.EmailInfo;
+import com.imxss.web.install.InstallHandle;
 import com.imxss.web.service.EmailService;
 import com.imxss.web.service.SettingService;
 
