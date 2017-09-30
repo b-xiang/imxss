@@ -201,6 +201,9 @@ public class InstallHandle {
 	}
 
 	public static MsgEntity install(InstallConfig config) {
+		if(isInstall()){
+			return new MsgEntity(-1, "ImXSS已安装，如需重装请修改config/conf.properties下installed参数为0");
+		}
 		if (!StringUtil.isNullOrEmpty(config.host)) {
 			config.host = config.host.replace("：", ":");
 		}
