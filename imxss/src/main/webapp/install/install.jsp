@@ -1,6 +1,11 @@
+<%@page import="com.imxss.web.install.InstallHandle"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="/WEB-INF/tld/c.tld"%>
-
+<%
+	if(InstallHandle.isInstall()){
+		return;
+	}
+ %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
