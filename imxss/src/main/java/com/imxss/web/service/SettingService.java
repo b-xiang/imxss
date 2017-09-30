@@ -21,7 +21,7 @@ public class SettingService {
 	 */
 	@CacheWrite(key=CacheFinal.SETTING_INFO,validTime=72000)
 	public SettingInfo loadSiteSetting(){
-		return jdbcHandle.findBeanFirst(SettingInfo.class,"id",1);
+		return jdbcHandle.findBeanFirst(SettingInfo.class);
 	}
 	
 	@CacheWipe(key=CacheFinal.SETTING_INFO)

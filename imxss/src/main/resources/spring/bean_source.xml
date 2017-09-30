@@ -10,10 +10,10 @@
 	
 	<bean id="dataSource" destroy-method="close"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${jdbc.driverClass}" />
-		<property name="jdbcUrl" value="${jdbc.url}" />
-		<property name="user" value="${jdbc.user}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="driverClass" value="${jdbc_driverClass}" />
+		<property name="jdbcUrl" value="${jdbc_url}" />
+		<property name="user" value="${jdbc_user}" />
+		<property name="password" value="${jdbc_password}" />
 		<!--当连接池中的连接用完时，C3P0一次性创建新连接的数目 -->
 		<property name="acquireIncrement" value="10" />
 		<!-- 始化时创建的连接数，应在minPoolSize与maxPoolSize之间取值。默认为3； -->
