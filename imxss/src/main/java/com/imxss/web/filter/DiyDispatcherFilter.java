@@ -93,6 +93,7 @@ public class DiyDispatcherFilter extends DispatcherServlet implements Filter {
 			service(new XssHttpServletRequestWrapper(req), res);
 			return;
 		}
+		req.getRequestDispatcher("/WEB-INF/view/404.jsp").forward(request, response);;
 		return;
 	}
 
