@@ -93,7 +93,6 @@ public class DiyDispatcherFilter extends DispatcherServlet implements Filter {
 			service(new XssHttpServletRequestWrapper(req), res);
 			return;
 		}
-		chain.doFilter(req, res);
 		return;
 	}
 
