@@ -4,7 +4,7 @@
 
 	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[时间\:%d{yyyy-MM-dd hh\:mm\:ss}] [日志级别\:%p] [类\:%c]  [日志\:%m] %n" />
+			<param name="ConversionPattern" value="[%p] [%d{MM-dd hh\:mm\:ss}] [%c] [%m] %n" />
 		</layout>
 	</appender>
 	<!--class定义日志记录器-->
@@ -18,7 +18,7 @@
 		<param name="Encoding" value="UTF8" />
 		<!--log4j的打印日志布局,可参考相关log4j文档设置-->
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[时间\:%d{yyyy-MM-dd hh\:mm\:ss}] [日志级别\:%p] [类\:%c]  [日志\:%m] %n" />
+			<param name="ConversionPattern" value="[%p] [%d{MM-dd hh\:mm\:ss}] [%c] [%m] %n" />
 		</layout>
 		<!--日志级别过滤器-->
         <!--过滤器设置输出的级别-->     
@@ -34,7 +34,7 @@
 		<param name="Append" value="true" />
 		<param name="Encoding" value="UTF8" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[时间\:%d{yyyy-MM-dd hh\:mm\:ss}] [日志级别\:%p] [类\:%c]  [日志\:%m] %n" />
+			<param name="ConversionPattern" value="[%p] [%d{MM-dd hh\:mm\:ss}] [%c] [%m] %n" />
 		</layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">     
             <param name="levelMin" value="INFO" />     
@@ -48,7 +48,7 @@
 		<param name="Append" value="true" />
 		<param name="Encoding" value="UTF8" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[时间\:%d{yyyy-MM-dd hh\:mm\:ss}] [日志级别\:%p] [类\:%c]  [日志\:%m] %n" />
+			<param name="ConversionPattern" value="[%p] [%d{MM-dd hh\:mm\:ss}] [%c] [%m] %n" />
 		</layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">     
             <param name="levelMin" value="WARN" />     
@@ -62,7 +62,7 @@
 		<param name="Append" value="true" />
 		<param name="Encoding" value="UTF8" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[时间\:%d{yyyy-MM-dd hh\:mm\:ss}] [日志级别\:%p] [类\:%c]  [日志\:%m] %n" />
+			<param name="ConversionPattern" value="[%p] [%d{MM-dd hh\:mm\:ss}] [%c] [%m] %n" />
 		</layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">     
             <param name="levelMin" value="ERROR" />     
