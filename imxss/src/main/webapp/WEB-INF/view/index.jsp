@@ -131,7 +131,7 @@
 					</h2>
 					<p class="lead">
 						其实 <a target="_blank" href="//user.qzone.qq.com/644556636">Scrum团队</a>根本不会技术,
-						这个团队也是相当的弱,他们写代码都是copy来的,以至于做完了整套XSS系统,都不知道这copy来的是什么语言
+						这个团队也是非常脆弱,他们写代码都是copy来的,以至于做完了整套XSS系统,都不知道这copy来的是什么语言
 					</p>
 				</div>
 				<div class="col-lg-5 col-sm-pull-6  col-sm-6">
