@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="/WEB-INF/tld/c.tld"%>
 <%@ taglib prefix="fn" uri="/WEB-INF/tld/fn.tld"%>
-<div class="tpl-left-nav-title">功能列表</div>
+
+<c:forEach items="${menuMaps}" var="entry">
+<div class="tpl-left-nav-title">${entry.key }</div>
 <div class="tpl-left-nav-list">
 	<ul class="tpl-left-nav-menu">
-		<c:forEach items="${menus }" var="menu" varStatus="index">
+		<c:forEach items="${entry.value }" var="menu" varStatus="index">
 			<li class="tpl-left-nav-item"><a href="#" id="menu${index.index }"
 				class="nav-link tpl-left-nav-link-list"> <i
 					class="am-icon-wpforms"></i> <span>${menu.title }</span> <i
@@ -29,3 +31,5 @@
 
 	</ul>
 </div>
+
+</c:forEach>
