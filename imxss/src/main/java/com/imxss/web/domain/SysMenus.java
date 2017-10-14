@@ -20,6 +20,15 @@ public class SysMenus extends BaseModel {
 	private Integer seq;
 	private String code;
 	private String remark;
+	private String groupName;
+	
+	
+	public String getGroupName() {
+		return groupName;
+	}
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
 	public Integer getId() {
 		return id;
 	}

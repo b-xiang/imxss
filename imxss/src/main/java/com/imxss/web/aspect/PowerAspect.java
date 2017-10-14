@@ -2,6 +2,7 @@ package com.imxss.web.aspect;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Map;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -30,6 +31,7 @@ public class PowerAspect {
 	
 	private final BaseLogger logger = BaseLogger.getLoggerPro(this.getClass());
 
+	@SuppressWarnings("rawtypes")
 	@Around("@annotation(org.coody.framework.context.annotation.Power)")
 	public Object bPpowerMonitor(ProceedingJoinPoint pjp) throws Throwable {
 		StopWatch sw = new StopWatch(getClass().getSimpleName());
@@ -71,7 +73,8 @@ public class PowerAspect {
 			Object result = pjp.proceed();
 			//方法执行完毕，刷新菜单
 			List<MenuSchema> menuSchemas= menuService.parseMenus(menus);
-			RequestUtil.getRequest().setAttribute("menus", menuSchemas);
+			Map<Object, List> menuMaps=PropertUtil.listToMaps(menuSchemas, "groupName");
+			RequestUtil.getRequest().setAttribute("menuMaps", menuMaps);
 			String uri= RequestUtil.getRequestURI(RequestUtil.getRequest());
 			RequestUtil.getRequest().setAttribute("uri", uri);
 			return result;
