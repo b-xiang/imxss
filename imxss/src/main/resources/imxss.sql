@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : imxss
+Source Server         : etrick
 Source Server Version : 50719
-Source Host           : 45.113.160.49:52014
-Source Database       : imxss_002
+Source Host           : etrick.org:52014
+Source Database       : idreader-general
 
 Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-09-30 16:29:04
+Date: 2017-10-14 23:13:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,9 +27,11 @@ CREATE TABLE `address_info` (
   `city` varchar(64) DEFAULT NULL,
   `isp` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`ip`)
-) ENGINE=InnoDB  ;
+) ENGINE=InnoDB ;
 
-
+-- ----------------------------
+-- Records of address_info
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for email_info
@@ -42,7 +44,7 @@ CREATE TABLE `email_info` (
   `password` varchar(64) COLLATE utf8_bin DEFAULT NULL,
   `sendNum` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=41  ;
 
 -- ----------------------------
 -- Records of email_info
@@ -62,7 +64,7 @@ CREATE TABLE `email_queue` (
   `millisecond` bigint(32) DEFAULT NULL,
   `updateTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`unionId`)
-) ENGINE=InnoDB  ;
+) ENGINE=InnoDB ;
 
 -- ----------------------------
 -- Records of email_queue
@@ -80,7 +82,7 @@ CREATE TABLE `invite_info` (
   PRIMARY KEY (`inviteCode`),
   KEY `invite_user_id_fk` (`userId`),
   KEY `invite_code_index` (`inviteCode`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB  ;
 
 -- ----------------------------
 -- Records of invite_info
@@ -105,7 +107,7 @@ CREATE TABLE `letter_info` (
   KEY `letter_project_id_fk` (`projectId`) USING BTREE,
   KEY `letter_userId_index` (`userId`),
   FULLTEXT KEY `letter_refurl_index` (`refUrl`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=6031  ;
 
 -- ----------------------------
 -- Records of letter_info
@@ -122,7 +124,7 @@ CREATE TABLE `letter_paras` (
   `updateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`paraName`,`letterId`),
   KEY `paras_letter_id` (`letterId`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB  ;
 
 -- ----------------------------
 -- Records of letter_paras
@@ -144,12 +146,12 @@ CREATE TABLE `module_info` (
   KEY `module_id_index` (`id`),
   KEY `module_type_index` (`type`),
   KEY `module_all_index` (`userId`,`type`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=80  ;
 
 -- ----------------------------
 -- Records of module_info
 -- ----------------------------
-INSERT INTO `module_info` VALUES ('37', '0', '获取Cookie', 0x7661722078203D206E657720496D61676528293B0D0A747279207B0D0A09766172206D796F70656E6572203D2027273B0D0A096D796F70656E6572203D2077696E646F772E6F70656E65722026262077696E646F772E6F70656E65722E6C6F636174696F6E203F2077696E646F772E6F70656E65722E6C6F636174696F6E0D0A0909093A2027273B0D0A7D206361746368202865727229207B0D0A7D0D0A782E737263203D20277B6170697D3F6C6F636174696F6E3D270D0A09092B2065736361706528646F63756D656E742E6C6F636174696F6E29202B202726746F706C6F636174696F6E3D270D0A09092B2065736361706528746F702E646F63756D656E742E6C6F636174696F6E29202B202726636F6F6B69653D27202B2065736361706528646F63756D656E742E636F6F6B6965290D0A09092B2027266F70656E65723D27202B20657363617065286D796F70656E657229202B20272672656665727265723D270D0A09092B2065736361706528646F63756D656E742E7265666572726572293B, '1', '2017-07-14 08:32:33', '获取Cookie');
+INSERT INTO `module_info` VALUES ('37', '0', '获取Cookie', 0x7661722078203D206E657720496D61676528293B0D0A747279207B0D0A09766172206D796F70656E6572203D2027273B0D0A096D796F70656E6572203D2077696E646F772E6F70656E65722026262077696E646F772E6F70656E65722E6C6F636174696F6E203F2077696E646F772E6F70656E65722E6C6F636174696F6E0909093A2027273B0D0A7D206361746368202865727229207B0D0A7D0D0A6D796F70656E6572203D286D796F70656E6572203D3D6E756C6C293F22223A6D796F70656E6572203B0D0A782E737263203D20272F2F696D7873732E636F6D2F732F6170695F3239392E6573703F6C6F636174696F6E3D270D0A09092B2065736361706528646F63756D656E742E6C6F636174696F6E29202B202726746F706C6F636174696F6E3D270D0A09092B2065736361706528746F702E646F63756D656E742E6C6F636174696F6E29202B202726636F6F6B69653D27202B2065736361706528646F63756D656E742E636F6F6B6965290D0A09092B2027266F70656E65723D27202B20657363617065286D796F70656E657229202B20272672656665727265723D270D0A09092B2065736361706528646F63756D656E742E7265666572726572293B, '1', '2017-07-14 08:32:33', '获取Cookie');
 
 -- ----------------------------
 -- Table structure for project_info
@@ -170,7 +172,7 @@ CREATE TABLE `project_info` (
   PRIMARY KEY (`id`),
   KEY `project_module_id_fk` (`moduleId`) USING BTREE,
   KEY `project_user_id_fk` (`userId`) USING BTREE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=370  ;
 
 -- ----------------------------
 -- Records of project_info
@@ -191,7 +193,7 @@ CREATE TABLE `project_module_mapping` (
   KEY `mappingUrl_index` (`mappingUrl`),
   KEY `mappingUrl_user_index` (`mappingUrl`,`userId`),
   KEY `mappingUrl_user_project_index` (`projectId`,`mappingUrl`,`userId`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB  ;
 
 -- ----------------------------
 -- Records of project_module_mapping
@@ -210,12 +212,12 @@ CREATE TABLE `setting_info` (
   `openReg` int(1) DEFAULT '1' COMMENT '0未开启 1开启',
   `needInvite` int(1) DEFAULT '0' COMMENT '0不需要 1需要',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB AUTO_INCREMENT=2  ;
 
 -- ----------------------------
 -- Records of setting_info
 -- ----------------------------
-INSERT INTO `setting_info` set id='1', siteName='ImXSS 国内最专业的Xss渗透测试平台', keywords='国内最专业的Xss渗透测试平台  --ImXSS', description='ImXss为Coody研发且开源。是国内最专业的Xss渗透平台', copyright='Copyright © 2014-2019 Scrum Group 版权所有',openReg= '1', needInvite='0';
+INSERT INTO `setting_info` VALUES ('1', 'ImXSS 国内最专业的Xss渗透测试平台', '国内最专业的Xss渗透测试平台  --ImXSS', 'ImXss为etrick研发且开源。是国内最专业的Xss渗透平台', 'Copyright © 2014-2019 Scrum Group 版权所有', '1', '0');
 
 -- ----------------------------
 -- Table structure for suffix_info
@@ -225,7 +227,7 @@ CREATE TABLE `suffix_info` (
   `suffix` varchar(255) NOT NULL,
   `status` int(1) DEFAULT NULL,
   PRIMARY KEY (`suffix`)
-) ENGINE=InnoDB  ;
+) ENGINE=InnoDB ;
 
 -- ----------------------------
 -- Records of suffix_info
@@ -295,7 +297,7 @@ CREATE TABLE `suffix_static` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `suffix` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=26 ;
 
 -- ----------------------------
 -- Records of suffix_static
@@ -339,36 +341,38 @@ CREATE TABLE `sys_menus` (
   `seq` int(11) DEFAULT NULL,
   `code` varchar(128) DEFAULT NULL,
   `remark` varchar(1024) DEFAULT NULL,
+  `groupName` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `menu_upId_fk` (`upId`),
   CONSTRAINT `menu_upId_fk` FOREIGN KEY (`upId`) REFERENCES `sys_menus` (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=67 ;
 
 -- ----------------------------
 -- Records of sys_menus
 -- ----------------------------
-INSERT INTO `sys_menus` VALUES ('4', '调试中心', '#', '0', null, '4', null, null);
-INSERT INTO `sys_menus` VALUES ('28', '运行状态', 'admin/simple/index', '1', '4', '1', 'index', '后台管理首页');
-INSERT INTO `sys_menus` VALUES ('29', '资源管理', 'admin/simple/resources', '1', '4', '1', 'resources', '对项目文件进行管理');
-INSERT INTO `sys_menus` VALUES ('30', '监听管理', 'admin/simple/monitorList', '1', '4', '2', 'monitorSetting', '对项目方法进行监听');
-INSERT INTO `sys_menus` VALUES ('32', '缓存管理', 'admin/simple/cacheManage', '1', '4', '4', 'cacheSetting', '对系统缓存进行清理');
-INSERT INTO `sys_menus` VALUES ('48', '用户中心', '#', '0', null, '0', '', '会员中心相关管理');
-INSERT INTO `sys_menus` VALUES ('49', '个人设置', 'user/userSetting', '1', '48', '0', 'userSetting', '用户资料修改');
-INSERT INTO `sys_menus` VALUES ('50', '信封管理', 'user/letter/letterCenter', '1', '48', '1', 'letterCenter', '信封管理');
-INSERT INTO `sys_menus` VALUES ('51', '项目管理', 'user/project/projectCenter', '1', '48', '2', 'projectCenter', '项目管理');
-INSERT INTO `sys_menus` VALUES ('52', '模块管理', 'user/module/moduleCenter', '1', '48', '3', 'moduleCenter', '模块管理');
-INSERT INTO `sys_menus` VALUES ('53', '公共邮箱', 'user/email/emailCenter', '1', '54', '1', 'emailCenter', '系统公用发信邮箱');
-INSERT INTO `sys_menus` VALUES ('54', '公共信息', '#', '0', null, '0', null, null);
-INSERT INTO `sys_menus` VALUES ('55', '公共模块', 'user/module/moduleComm', '1', '54', '3', 'moduleComm', '系统公用模块');
-INSERT INTO `sys_menus` VALUES ('56', '管理中心', '#', '0', null, '3', '', '管理员模块');
-INSERT INTO `sys_menus` VALUES ('57', '用户管理', 'admin/user/userManage', '1', '56', '3', 'userManage', '用户管理');
-INSERT INTO `sys_menus` VALUES ('58', '项目管理', 'admin/project/projectManage', '1', '56', '4', 'projectManage', '项目管理');
-INSERT INTO `sys_menus` VALUES ('59', '模块管理', 'admin/module/moduleManage', '1', '56', '5', 'moduleManage', '模块管理');
-INSERT INTO `sys_menus` VALUES ('60', '信封管理', 'admin/letter/letterManage', '1', '56', '6', 'letterManage', '信封管理');
-INSERT INTO `sys_menus` VALUES ('61', '邀请码库', 'admin/invite/inviteManage', '1', '56', '2', 'inviteManage', '邀请码管理');
-INSERT INTO `sys_menus` VALUES ('62', '系统设置', 'admin/setting/settingManage', '1', '56', '0', 'settingManage', '系统设置');
-INSERT INTO `sys_menus` VALUES ('63', '邮箱管理', 'admin/email/emailManage', '1', '56', '0', 'emailManage', '模块管理');
-INSERT INTO `sys_menus` VALUES ('64', '后缀设置', 'admin/suffix/suffixManage', '1', '56', '1', 'suffixManage', '后缀设置');
+INSERT INTO `sys_menus` VALUES ('4', '调试中心', '#', '0', null, '4', null, null, '管理员功能');
+INSERT INTO `sys_menus` VALUES ('28', '运行状态', 'admin/simple/index', '1', '4', '1', 'index', '后台管理首页', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('29', '资源管理', 'admin/simple/resources', '1', '4', '1', 'resources', '对项目文件进行管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('30', '监听管理', 'admin/simple/monitorList', '1', '4', '2', 'monitorSetting', '对项目方法进行监听', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('32', '缓存管理', 'admin/simple/cacheManage', '1', '4', '4', 'cacheSetting', '对系统缓存进行清理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('48', '用户中心', '#', '0', null, '0', '', '会员中心相关管理', '用户功能');
+INSERT INTO `sys_menus` VALUES ('49', '个人设置', 'user/userSetting', '1', '48', '0', 'userSetting', '用户资料修改', '用户功能');
+INSERT INTO `sys_menus` VALUES ('50', '信封管理', 'user/letter/letterCenter', '1', '48', '1', 'letterCenter', '信封管理', '用户功能');
+INSERT INTO `sys_menus` VALUES ('51', '项目管理', 'user/project/projectCenter', '1', '48', '2', 'projectCenter', '项目管理', '用户功能');
+INSERT INTO `sys_menus` VALUES ('52', '模块管理', 'user/module/moduleCenter', '1', '48', '3', 'moduleCenter', '模块管理', '用户功能');
+INSERT INTO `sys_menus` VALUES ('53', '公共邮箱', 'user/email/emailCenter', '1', '54', '1', 'emailCenter', '系统公用发信邮箱', '用户功能');
+INSERT INTO `sys_menus` VALUES ('54', '公共信息', '#', '0', null, '0', null, null, '用户功能');
+INSERT INTO `sys_menus` VALUES ('55', '公共模块', 'user/module/moduleComm', '1', '54', '3', 'moduleComm', '系统公用模块', '用户功能');
+INSERT INTO `sys_menus` VALUES ('57', '用户管理', 'admin/user/userManage', '1', '66', '3', 'userManage', '用户管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('58', '项目管理', 'admin/project/projectManage', '1', '66', '4', 'projectManage', '项目管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('59', '模块管理', 'admin/module/moduleManage', '1', '66', '5', 'moduleManage', '模块管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('60', '信封管理', 'admin/letter/letterManage', '1', '66', '6', 'letterManage', '信封管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('61', '邀请码库', 'admin/invite/inviteManage', '1', '65', '2', 'inviteManage', '邀请码管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('62', '系统设置', 'admin/setting/settingManage', '1', '65', '0', 'settingManage', '系统设置', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('63', '邮箱设置', 'admin/email/emailManage', '1', '65', '0', 'emailManage', '模块管理', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('64', '后缀设置', 'admin/suffix/suffixManage', '1', '65', '1', 'suffixManage', '后缀设置', '管理员功能');
+INSERT INTO `sys_menus` VALUES ('65', '系统设置', '#', '0', null, '2', null, null, '管理员功能');
+INSERT INTO `sys_menus` VALUES ('66', '内容管理', '#', '0', null, '3', null, null, '管理员功能');
 
 -- ----------------------------
 -- Table structure for user_info
@@ -390,7 +394,7 @@ CREATE TABLE `user_info` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_mobile_index` (`mobile`) USING BTREE,
   UNIQUE KEY `user_email_index` (`email`) USING BTREE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB AUTO_INCREMENT=768  ;
 
 -- ----------------------------
 -- Records of user_info
@@ -405,10 +409,10 @@ CREATE TABLE `user_role` (
   `name` varchar(64) DEFAULT NULL,
   `menus` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  ;
+) ENGINE=InnoDB ;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
 INSERT INTO `user_role` VALUES ('0', '会员', '48,49,50,51,52,53,55,54');
-INSERT INTO `user_role` VALUES ('1', '管理员', '4,28,29,30,32,48,49,50,51,52,53,55,54,56,57,58,59,60,61,62,64,63');
+INSERT INTO `user_role` VALUES ('1', '管理员', '4,28,29,30,32,48,49,50,51,52,53,55,54,57,58,59,60,61,62,64,63,65,66');
