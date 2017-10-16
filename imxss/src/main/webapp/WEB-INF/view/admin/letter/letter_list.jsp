@@ -122,7 +122,6 @@
 
 						</div>
 					</div>
-					<div class="tpl-alert"></div>
 				</div>
 			</form>
 		</div>
