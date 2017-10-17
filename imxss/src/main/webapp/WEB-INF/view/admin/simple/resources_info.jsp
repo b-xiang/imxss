@@ -360,5 +360,14 @@ fieldset{
     margin: 0 0 0.3rem 0 !important;
     margin-top: 0.3rem !important;
 }
+pre[class*=language-] {
+     white-space: pre-wrap !important;
+	 word-break: break-all !important;
+}
+
+code[class*=language-], pre[class*=language-] {
+     white-space: pre-wrap !important;
+	 word-break: break-all !important;
+}
 </style>
 </html>
