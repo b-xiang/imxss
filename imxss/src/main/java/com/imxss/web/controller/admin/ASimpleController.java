@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ import org.coody.framework.util.PropertUtil;
 import org.coody.framework.util.SimpleUtil;
 import org.coody.framework.util.SpringContextHelper;
 import org.coody.framework.util.StringUtil;
+import org.coody.framework.util.ZipUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -71,10 +73,10 @@ public class ASimpleController extends BaseController {
 	public String resources(HttpServletRequest req, HttpServletResponse res) {
 		String path = getPara("file");
 		if (StringUtil.isNullOrEmpty(path)) {
-			path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+			path = getBasePath();
 		}
 		path = new File(path).getPath().replace("\\", "/");
-		String basePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+		String basePath =  getBasePath();
 		basePath = new File(basePath).getPath().replace("\\", "/");
 		basePath = URLDecoder.decode(basePath);
 		path = URLDecoder.decode(path);
@@ -96,11 +98,34 @@ public class ASimpleController extends BaseController {
 		keepParas();
 		return "/admin/simple/resources";
 	}
-
+	@SuppressWarnings("deprecation")
+	private String getBasePath(){
+		String path= request.getSession().getServletContext().getRealPath("/");
+		path=new File(path).getPath().replace("\\", "/") + "/";
+		path = URLDecoder.decode(path);
+		return path;
+	}
+	
+	private String getLibPath(){
+		String path= getBasePath()+"WEB-INF/lib/";
+		path=path.replace("\\", "/");
+		while(path.contains("//")){
+			path=path.replace("//", "/");
+		}
+		return path;
+	}
 	@RequestMapping(value = "/resourcesInfo")
 	@Power("resources")
 	@LogHead("资源管理-文件详情")
 	public String resourcesInfo(HttpServletRequest req, HttpServletResponse res) {
+		String path = getPara("file");
+		if (StringUtil.isNullOrEmpty(path)) {
+			return "redirect:resources."+getSessionPara("defSuffix");
+		}
+		if (path.toLowerCase().endsWith(".jar")) {
+			path=ZipUtil.unZipFile(path);
+			return "redirect:resources."+getSessionPara("defSuffix")+"?file="+URLEncoder.encode(path);
+		}
 		loadClassEntity();
 		return "/admin/simple/resources_info";
 	}
@@ -292,7 +317,7 @@ public class ASimpleController extends BaseController {
 		if (StringUtil.isNullOrEmpty(path)) {
 			return null;
 		}
-		String basePath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+		String basePath = getBasePath();
 		basePath = new File(basePath).getPath().replace("\\", "/") + "/";
 		basePath = URLDecoder.decode(basePath);
 		path = path.replace("\\", "/");
@@ -303,7 +328,7 @@ public class ASimpleController extends BaseController {
 		while (path.contains("../")) {
 			path = path.replace("../", "");
 		}
-		if (!path.endsWith(".class")) {
+		if (!path.toLowerCase().endsWith(".class")) {
 			File file = new File(path);
 			if (file.length() < 1048576) {
 				String info = FileUtils.readFile(path);
@@ -312,14 +337,28 @@ public class ASimpleController extends BaseController {
 			return null;
 		}
 		try {
-			String packet = path.replace(basePath, "");
+			String jarPath=getLibPath();
+			if(path.contains(jarPath)){
+				String tempPath=path.replace(jarPath, "");
+				String []dirs=tempPath.split("/");
+				jarPath=jarPath+dirs[0]+"/";
+			}
+			String classPath=Thread.currentThread().getContextClassLoader().getResource("").getPath();
+			classPath = new File(classPath).getPath().replace("\\", "/") + "/";
+			classPath = URLDecoder.decode(classPath);
+			String packet = path.replace(classPath, "").replace(jarPath, "");
 			packet = packet.replace("/", ".");
-			packet = packet.replace(".class", "");
+			if(packet.toLowerCase().endsWith(".class")){
+				packet = packet.substring(0, packet.length()-".class".length());
+				System.out.println(packet);
+			}
+			logger.info("加载类："+packet);
 			Class<?> clazz = Class.forName(packet);
 			CtClassEntity classInfo = SimpleUtil.getClassEntity(clazz);
 			setAttribute("classInfo", classInfo);
 			return classInfo;
 		} catch (Exception e) {
+			PrintException.printException(logger, e);
 			return null;
 		}
 	}

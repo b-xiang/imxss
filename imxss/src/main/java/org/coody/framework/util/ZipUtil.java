@@ -27,15 +27,17 @@ public class ZipUtil {
 	}
 
 	@SuppressWarnings("resource")
-	public static void unZipFile(String jarPath) {
+	public static String unZipFile(String jarPath) {
 		try {
 			JarFile jarFile = new JarFile(jarPath);
 			Enumeration<JarEntry> jarEntrys = jarFile.entries();
+			if(jarPath.toLowerCase().endsWith(".jar")){
+				jarPath=jarPath.substring(0,jarPath.length()-".jar".length());
+			}
 			while (jarEntrys.hasMoreElements()) {
 				JarEntry jarEntry = jarEntrys.nextElement();
 				jarEntry.getName();
 				String outFileName = jarPath+"/" + jarEntry.getName();
-				outFileName=outFileName.replace(".jar", "").replace(".JAR", "");
 				makeSupDir(outFileName);
 				if (jarEntry.isDirectory()) {
 					continue;
@@ -43,8 +45,9 @@ public class ZipUtil {
 				File f = new File(outFileName);
 				writeFile(jarFile.getInputStream(jarEntry), f);
 			}
+			return jarPath;
 		} catch (Exception e) {
-			// TODO: handle exception
+			return null;
 		}
 		
 	}
