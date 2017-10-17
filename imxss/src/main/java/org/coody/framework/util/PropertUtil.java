@@ -808,24 +808,36 @@ public class PropertUtil {
 				}
 				return value;
 			}
-			if (Boolean.class.isAssignableFrom(clazz)) {
+			if (Boolean.class.isAssignableFrom(clazz)||boolean.class.isAssignableFrom(clazz)) {
 				value = ((String) value).equals("true") ? true : false;
 				return value;
 			}
-			if (Integer.class.isAssignableFrom(clazz)) {
+			if (Integer.class.isAssignableFrom(clazz)||int.class.isAssignableFrom(clazz)) {
 				value = Integer.valueOf(value.toString());
 				return value;
 			}
-			if (Float.class.isAssignableFrom(clazz)) {
+			if (Float.class.isAssignableFrom(clazz)||float.class.isAssignableFrom(clazz)) {
 				value = Float.valueOf(value.toString());
 				return value;
 			}
-			if (Long.class.isAssignableFrom(clazz)) {
+			if (Long.class.isAssignableFrom(clazz)||long.class.isAssignableFrom(clazz)) {
 				value = Long.valueOf(value.toString());
 				return value;
 			}
-			if (Double.class.isAssignableFrom(clazz)) {
+			if (Double.class.isAssignableFrom(clazz)||double.class.isAssignableFrom(clazz)) {
 				value = Double.valueOf(value.toString());
+				return value;
+			}
+			if (Short.class.isAssignableFrom(clazz)||short.class.isAssignableFrom(clazz)) {
+				value = Short.valueOf(value.toString());
+				return value;
+			}
+			if (Byte.class.isAssignableFrom(clazz)||byte.class.isAssignableFrom(clazz)) {
+				value = Byte.valueOf(value.toString());
+				return value;
+			}
+			if (Boolean.class.isAssignableFrom(clazz)||boolean.class.isAssignableFrom(clazz)) {
+				value = ("true".equals(value.toString())||"1".equals(value.toString()))?true:false;
 				return value;
 			}
 			if (String.class.isAssignableFrom(clazz)) {
