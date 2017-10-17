@@ -114,6 +114,7 @@ public class ASimpleController extends BaseController {
 		}
 		return path;
 	}
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/resourcesInfo")
 	@Power("resources")
 	@LogHead("资源管理-文件详情")
