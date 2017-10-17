@@ -30,17 +30,19 @@ import com.imxss.web.service.SuffixService;
 @SuppressWarnings("serial")
 public class DiyDispatcherFilter extends DispatcherServlet implements Filter {
 
-	String[] languages = { "ASP.NET", "ASP", "PHP/5.4.27", "JScript", "VB.NET", "VBScript", "CGI", "Python", "Perl",
-			"JAVA", "ELanguage" };
-	List<String> languageList = Arrays.<String>asList(languages);
-
-	String[] servers = { "Microsoft-IIS/10.0", "Microsoft-IIS/9.0", "Microsoft-IIS/9.5", "Microsoft-IIS/3.0",
-			"Microsoft-IIS/3.5", "Microsoft-IIS/2.0", "Microsoft-IIS/2.5", "WebSOS-Server/2.0", "WebSOS-Server/3.0",
-			"WebSOS-Server/9.0", "Hacker-Server/2.0", "Hacker-Server/3.0", "Hacker-Server/4.0", "Hacker-Server/8.0",
-			"Hacker-Server/9.0", "Hacker-Server/2.5", "Hacker-Server/3.5", "Hacker-Server/4.5", "Hacker-Server/8.5",
-			"Hacker-Server/9.5", "ASP-Server/2.5", "ASP-Server/3.5", "ASP-Server/4.5", "ASP-Server/5.5",
-			"Xampp-Server/2.5", "Xampp-Server/3.5", "Xampp-Server/5.5", "Xampp-Server/6.0", "Xampp-Server/8.5", };
-	List<String> serverList = Arrays.<String>asList(servers);
+	static String [] languages={"ASP.NET","ASP","PHP/5.4.27","JScript","VB.NET","VBScript","CGI","Python","Perl","JAVA","ELanguage"};
+	static List<String> languageList=Arrays.<String>asList(languages);
+	
+	static String [] servers={"Microsoft-IIS/10.0","Microsoft-IIS/9.0","Microsoft-IIS/9.5","Microsoft-IIS/3.0","Microsoft-IIS/3.5",
+			"Microsoft-IIS/2.0","Microsoft-IIS/2.5",
+			"Coody-Server/2.0","Coody-Server/3.0","Coody-Server/9.0",
+			"Hacker-Server/2.0","Hacker-Server/3.0","Hacker-Server/4.0","Hacker-Server/8.0","Hacker-Server/9.0",
+			"Hacker-Server/2.5","Hacker-Server/3.5","Hacker-Server/4.5","Hacker-Server/8.5","Hacker-Server/9.5",
+			"ASP-Server/2.5","ASP-Server/3.5","ASP-Server/4.5","ASP-Server/5.5",
+			"Xampp-Server/2.5","Xampp-Server/3.5","Xampp-Server/5.5","Xampp-Server/6.0","Xampp-Server/8.5",
+	};
+	static List<String> serverList=Arrays.<String>asList(servers);
+	
 
 	public void baseFilter(HttpServletRequest req, HttpServletResponse res) {
 		try {
