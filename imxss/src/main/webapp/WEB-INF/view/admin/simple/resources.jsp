@@ -38,6 +38,7 @@
 				<div class="tpl-block">
 					<div class="am-g">
 						<div class="am-u-sm-12">
+						<div class="note note-info">${currFile }</div>
 							<table 
 								class="am-table am-table-compact am-table-striped tpl-table-black "
 								id="example-r">
