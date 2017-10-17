@@ -138,29 +138,23 @@ public class ASimpleController extends BaseController {
 	public Object modifyField(HttpServletRequest req, HttpServletResponse res) {
 		CtClassEntity clazz = loadClassEntity();
 		String fieldName = getPara("fieldName");
-		String value = getPara("fieldValue");
+		Object value = getPara("fieldValue");
 		Object bean = null;
 		try {
 			bean = SpringContextHelper.getBean(clazz.getSourceClass());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
 		for (CtBeanEntity field : clazz.getFields()) {
 			try {
 				if (field.getFieldName().equals(fieldName)) {
 					Field sourceField = field.getSourceField();
-					sourceField.setAccessible(true);
-					try {
-						Field modifiersField = Field.class.getDeclaredField("modifiers");
-						modifiersField.setAccessible(true);
-						modifiersField.set(sourceField, sourceField.getModifiers() & ~Modifier.FINAL);
-					} catch (Exception e) {
-						PrintException.printException(logger, e);
+					value=PropertUtil.parseValue(value, field.getFieldType());
+					if(Modifier.isStatic(sourceField.getModifiers())){
+						bean=null;
 					}
-					if (field.getIsStatic() == true) {
-						bean = null;
-					}
-					sourceField.set(bean, PropertUtil.parseValue(value, field.getFieldType()));
+					PropertUtil.setFieldValue(bean, sourceField, value);
 					return new MsgEntity(0, "操作成功");
 				}
 			} catch (Exception e) {
