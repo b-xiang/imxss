@@ -122,7 +122,6 @@ public class PropertUtil {
 
 	public static List<String> getMethodParaNames(Method method) {
 		try {
-			System.out.println(method.getName());
 			List<String> paras = new ArrayList<String>();
 			for (String paraName : discoverer.getParameterNames(method)) {
 				paras.add(paraName);
