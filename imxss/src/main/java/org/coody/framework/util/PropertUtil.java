@@ -3,6 +3,7 @@ package org.coody.framework.util;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.security.InvalidParameterException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 
 /**
  * @remark 一个神奇的工具。
- * @author WebSOS
+ * @author Coody
  * @email 644556636@qq.com
  * @blog http://54sb.org
  */
@@ -123,6 +124,9 @@ public class PropertUtil {
 	public static List<String> getMethodParaNames(Method method) {
 		try {
 			List<String> paras = new ArrayList<String>();
+			if(StringUtil.isNullOrEmpty(discoverer.getParameterNames(method))){
+				return null;
+			}
 			for (String paraName : discoverer.getParameterNames(method)) {
 				paras.add(paraName);
 			}
@@ -398,17 +402,67 @@ public class PropertUtil {
 	 * @throws IllegalAccessException 
 	 * @throws IllegalArgumentException 
 	 */
-	public static void setPropertiesCurr(Object object, String propertyName, Object value) throws IllegalArgumentException, IllegalAccessException {
+	public static void setFieldValue(Object object, String propertyName, Object value) throws IllegalArgumentException, IllegalAccessException {
 		Field field = getField(object.getClass(), propertyName);
 		if (StringUtil.isNullOrEmpty(field)) {
 			logger.error("字段未找到:" + propertyName);
 			return;
 		}
+		setFieldValue(object, field, value);
+	}
+
+	/**
+	 * 设置字段值
+	 * 
+	 * @param obj
+	 *            实例对象
+	 * @param propertyName
+	 *            属性名
+	 * @param value
+	 *            新的字段值
+	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws IllegalArgumentException 
+	 */
+	public static void setFieldValue(Object object, Field field, Object value) throws IllegalArgumentException, IllegalAccessException {
 		field.setAccessible(true);
+		if(Modifier.isFinal(field.getModifiers())){
+			int modifiers=field.getModifiers();
+			try {
+				Field modifiersField = Field.class.getDeclaredField("modifiers");
+				try {
+					modifiersField.setAccessible(true);
+					modifiersField.set(field, field.getModifiers() & ~Modifier.FINAL);
+					Object obj = parseValue(value, field.getType());
+					field.set(object, obj);
+				} catch (IllegalAccessException e) {
+					PrintException.printException(logger, e);
+					setProperties(field, "fieldAccessor.isReadOnly", false);
+					setProperties(field, "fieldAccessor.isFinal", false);
+					setProperties(field, "fieldAccessor.field", field);
+					
+					setProperties(field, "overrideFieldAccessor.isReadOnly", false);
+					setProperties(field, "overrideFieldAccessor.isFinal", false);
+					setProperties(field, "overrideFieldAccessor.field", field);
+					
+					setFieldValue(field, "root", field);
+					setFieldValue(object, field, value);
+				}catch (Exception e) {
+					PrintException.printException(logger, e);
+				}
+				finally{
+					if(modifiers!=field.getModifiers()){
+						modifiersField.set(field, modifiers);
+					}
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return;
+		}
 		Object obj = parseValue(value, field.getType());
 		field.set(object, obj);
 	}
-
 	/**
 	 * 设置字段值
 	 * 
@@ -432,7 +486,7 @@ public class PropertUtil {
 			return;
 		}
 		if (!propertyName.contains(".")) {
-			setPropertiesCurr(object, propertyName, value);
+			setFieldValue(object, propertyName, value);
 			return;
 		}
 		List<String> fields = new ArrayList<String>(Arrays.asList(propertyName.split("\\.")));
@@ -450,6 +504,7 @@ public class PropertUtil {
 		setProperties(beanTmp, StringUtil.collectionMosaic(fields, "."), value);
 		setProperties(object, fieldName, beanTmp);
 	}
+	
 
 	/**
 	 * 设置集合对象某字段值
@@ -807,10 +862,6 @@ public class PropertUtil {
 				}
 				return value;
 			}
-			if (Boolean.class.isAssignableFrom(clazz)||boolean.class.isAssignableFrom(clazz)) {
-				value = ((String) value).equals("true") ? true : false;
-				return value;
-			}
 			if (Integer.class.isAssignableFrom(clazz)||int.class.isAssignableFrom(clazz)) {
 				value = Integer.valueOf(value.toString());
 				return value;
@@ -852,5 +903,9 @@ public class PropertUtil {
 			PrintException.printException(logger, e);
 			return null;
 		}
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(parseValue(false, boolean.class));
 	}
 }
