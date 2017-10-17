@@ -356,5 +356,9 @@ body, pre {
 .note {
 	padding: 5px 15px 5px 5px !important;
 }
+fieldset{
+    margin: 0 0 0.3rem 0 !important;
+    margin-top: 0.3rem !important;
+}
 </style>
 </html>
