@@ -35,6 +35,6 @@
 </c:forEach>
 <style>
 .tpl-left-nav-sub-menu a {
-    padding: 4px 9px 6px 15px !important;
+    padding: 4px 2px 2px 15px !important;
 }
 </style>
