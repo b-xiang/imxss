@@ -58,7 +58,9 @@
 															data-noprefix />
 														<script src="//cdn.bootcss.com/prism/1.8.0/prism.min.js"></script>
 														<pre>
-															<code class="language-css">${context}</code>
+															<code class="language-css">
+${context}
+															</code>
 														</pre>
 													</c:if>
 												</div>
