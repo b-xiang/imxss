@@ -49,17 +49,17 @@
 												onsubmit="return false">
 												<div class="am-form-group">
 													<label for="doc-vld-ta-2"><small>文件内容：</small></label>
-													<c:if test="${isMessyCode }">
+													<c:if test="${isMessyCode ||fn:length(context)>65536 }">
 														<textarea id="doc-vld-ta-2" name="remark" rows="25">${context}</textarea>
 													</c:if>
-													<c:if test="${!isMessyCode }">
+													<c:if test="${!isMessyCode && fn:length(context)<65536 }">
 														<link rel="stylesheet"
 															href="//cdn.bootcss.com/prism/1.8.1/themes/prism.min.css"
 															data-noprefix />
 														<script src="//cdn.bootcss.com/prism/1.8.0/prism.min.js"></script>
 														<pre>
 															<code class="language-java language-html">
-${context}
+${code}
 															</code>
 														</pre>
 													</c:if>
