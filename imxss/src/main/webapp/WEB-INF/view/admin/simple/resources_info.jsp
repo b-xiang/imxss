@@ -339,5 +339,8 @@ hr, ol, p, pre, ul {
 body, pre {
 	line-height: 1.0;
 }
+.note {
+    padding: 5px 15px 5px 5px !important;
+}
 </style>
 </html>

@@ -54,7 +54,7 @@
 										<td colspan="3">
 											<form method="post" name="fileFormBase"
 												action="resources.${defSuffix }">
-												<input type="hidden" name="file" value="${parentFile}">
+												<input type="hidden" name="file" value="${parentFile}" >
 												<a href="javascript:document.fileFormBase.submit()"> <img
 													width="30px" src="${basePath}assets/img/file.png" />上级目录
 												</a>
@@ -64,7 +64,7 @@
 									<c:forEach items="${files }" var="file" varStatus="index">
 										<tr class="even gradeC">
 											<td><c:if test="${file.type==0 }">
-													<form method="post" name="fileForm${index.index }">
+													<form method="post" name="fileForm${index.index }" action="?">
 														<input type="hidden" name="file" value="${file.path }">
 														<a
 															href="javascript:document.fileForm${index.index}.submit()">
@@ -114,6 +114,9 @@ table {
 .page-header-description {
 	font-size: 1.4rem !important;
 	margin: 0 0 0.3rem 0 !important;
+}
+.note {
+    padding: 5px 15px 5px 5px !important;
 }
 </style>
 </html>
