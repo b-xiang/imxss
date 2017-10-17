@@ -32,6 +32,22 @@ import com.alibaba.fastjson.JSON;
 public class SimpleUtil {
 
 
+	public static String getMethodCacheKey(Class<?> clazz,Method method){
+		StringBuilder sb = new StringBuilder();
+		sb.append(clazz.getName()).append(".").append(method.getName());
+		Class<?>[] paraTypes = method.getParameterTypes();
+		sb.append("(");
+		if (!StringUtil.isNullOrEmpty(paraTypes)) {
+			for (int i = 0; i < paraTypes.length; i++) {
+				sb.append(paraTypes[i].getName());
+				if (i < paraTypes.length - 1) {
+					sb.append(",");
+				}
+			}
+		}
+		sb.append(")");
+		return  sb.toString();
+	}
 	public static String getMethodKey(Class<?> clazz, Method method) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(clazz.getName()).append(".").append(method.getName());
@@ -158,9 +174,11 @@ public class SimpleUtil {
 				tmp.setIsStatic(Modifier.isStatic(f.getModifiers()));
 				try {
 					if (tmp.getIsStatic()) {
+						f.setAccessible(true);
 						tmp.setFieldValue(f.get(null));
 					}
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 				infos.add(tmp);
 			}
