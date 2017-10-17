@@ -49,7 +49,18 @@
 												onsubmit="return false">
 												<div class="am-form-group">
 													<label for="doc-vld-ta-2"><small>文件内容：</small></label>
-													<textarea id="doc-vld-ta-2" name="remark" rows="25">${context}</textarea>
+													<c:if test="${isMessyCode }">
+														<textarea id="doc-vld-ta-2" name="remark" rows="25">${context}</textarea>
+													</c:if>
+													<c:if test="${!isMessyCode }">
+														<link rel="stylesheet"
+															href="//cdn.bootcss.com/prism/1.8.1/themes/prism.min.css"
+															data-noprefix />
+														<script src="//cdn.bootcss.com/prism/1.8.0/prism.min.js"></script>
+														<pre>
+															<code class="language-css">${context}</code>
+														</pre>
+													</c:if>
 												</div>
 											</form>
 										</c:if>
@@ -242,10 +253,10 @@
 
 	$(function() {
 		var html = $("#resourcesDiv").html();
-		while (html.indexOf("  ")>-1) {
+		while (html.indexOf("  ") > -1) {
 			html = html.replace("  ", "");
 		}
-		while (html.indexOf("&nbsp;&nbsp;")>-1) {
+		while (html.indexOf("&nbsp;&nbsp;") > -1) {
 			html = html.replace("&nbsp;&nbsp;", "&nbsp;");
 		}
 		$("#resourcesDiv").html(html.toString());
@@ -339,8 +350,9 @@ hr, ol, p, pre, ul {
 body, pre {
 	line-height: 1.0;
 }
+
 .note {
-    padding: 5px 15px 5px 5px !important;
+	padding: 5px 15px 5px 5px !important;
 }
 </style>
 </html>
