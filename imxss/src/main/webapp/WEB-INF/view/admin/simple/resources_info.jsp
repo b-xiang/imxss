@@ -41,9 +41,7 @@
 							<div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
 								<div class="am-g">
 									<fieldset>
-										<div class="widget-head am-cf">
-											<p class="page-header-description">当前文件：<a href="#">${file }</a></p>
-										</div>
+										<div class="note note-info">${file }</div>
 									</fieldset>
 									<fieldset>
 										<c:if test="${!empty context}">
