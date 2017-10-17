@@ -327,6 +327,10 @@ public class ASimpleController extends BaseController {
 			File file = new File(path);
 			if (file.length() < 1048576) {
 				String info = FileUtils.readFile(path);
+				if(!StringUtil.isNullOrEmpty(info)){
+					info = info.replace("<", "&lt;");
+					info = info.replace(">", "&gt;");
+				}
 				setAttribute("context", info);
 				setAttribute("isMessyCode",StringUtil.isMessyCode(info));
 			}
