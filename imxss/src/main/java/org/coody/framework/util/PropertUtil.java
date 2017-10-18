@@ -906,6 +906,5 @@ public class PropertUtil {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(parseValue(false, boolean.class));
 	}
 }

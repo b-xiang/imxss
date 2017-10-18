@@ -261,7 +261,6 @@ public class SimpleUtil {
 			if (StringUtil.isNullOrEmpty(types)) {
 				return null;
 			}
-			System.out.println(method.getName());
 			List<String> paraNames=PropertUtil.getMethodParaNames(method);
 			if (StringUtil.isNullOrEmpty(paraNames)) {
 				return null;

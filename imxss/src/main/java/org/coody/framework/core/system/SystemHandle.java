@@ -673,7 +673,6 @@ public class SystemHandle implements InitializingBean{
 			Set<String> userNames = new HashSet<String>();
 			if (who != null && who.length > 0) {
 				for (int i = 0; i < who.length; i++) {
-					// System.out.println("当前系统进程表中的用户名" + String.valueOf(i));
 					Who _who = who[i];
 					userNames.add(_who.getUser());
 				}
