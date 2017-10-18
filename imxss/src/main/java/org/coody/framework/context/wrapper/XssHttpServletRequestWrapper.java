@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 /**
  * 覆写Request方法，过滤XSS恶意脚本
  * 
- * @author WebSOS
+ * @author Coody
  * @time 2015-06-09
  */
 @SuppressWarnings("unchecked")

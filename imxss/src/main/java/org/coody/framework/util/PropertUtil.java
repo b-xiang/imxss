@@ -437,13 +437,16 @@ public class PropertUtil {
 					field.set(object, obj);
 				} catch (IllegalAccessException e) {
 					PrintException.printException(logger, e);
-					setProperties(field, "fieldAccessor.isReadOnly", false);
-					setProperties(field, "fieldAccessor.isFinal", false);
-					setProperties(field, "fieldAccessor.field", field);
-					
-					setProperties(field, "overrideFieldAccessor.isReadOnly", false);
-					setProperties(field, "overrideFieldAccessor.isFinal", false);
-					setProperties(field, "overrideFieldAccessor.field", field);
+					if(!StringUtil.isNullOrEmpty(PropertUtil.getFieldValue(field, "fieldAccessor"))){
+						setProperties(field, "fieldAccessor.isReadOnly", false);
+						setProperties(field, "fieldAccessor.isFinal", false);
+						setProperties(field, "fieldAccessor.field", field);
+					}
+					if(!StringUtil.isNullOrEmpty(PropertUtil.getFieldValue(field, "overrideFieldAccessor"))){
+						setProperties(field, "overrideFieldAccessor.isReadOnly", false);
+						setProperties(field, "overrideFieldAccessor.isFinal", false);
+						setProperties(field, "overrideFieldAccessor.field", field);
+					}
 					
 					setFieldValue(field, "root", field);
 					setFieldValue(object, field, value);
@@ -906,5 +909,9 @@ public class PropertUtil {
 	}
 	
 	public static void main(String[] args) {
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("a", "avalue");
+		map.put("b", "bValue");
+		System.out.println(map);
 	}
 }

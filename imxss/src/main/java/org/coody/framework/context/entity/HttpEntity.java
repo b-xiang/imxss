@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.coody.framework.context.base.BaseLogger;
+import org.coody.framework.util.GZIPUtils;
 import org.coody.framework.util.PrintException;
 
 public class HttpEntity {
@@ -11,12 +12,12 @@ public class HttpEntity {
 	private static final BaseLogger logger = BaseLogger.getLoggerPro(HttpEntity.class);
 	
 	
-	@SuppressWarnings("unused")
 	private String html;
 	private byte[] bye;
 	private String cookie;
 	private Integer code=-1;
 	private Map<String,String> headMap;
+	
 	public Map<String, String> getHeadMap() {
 		return headMap;
 	}
@@ -26,12 +27,30 @@ public class HttpEntity {
 	}
 
 	private String encode="UTF-8";
+	
 	public String getHtml() {
 		try {
+			if(html!=null){
+				return html;
+			}
 		if(bye==null){
 			return null;
 		}
 			String str= new String(bye, encode);
+			html=str;
+			return str;
+		} catch (Exception e) {
+			PrintException.printException(logger, e);
+		}
+		return null;
+	}
+	
+	public String getHtml(boolean isGzip) {
+		try {
+		if(bye==null){
+			return null;
+		}
+			String str= new String(GZIPUtils.uncompress(bye), encode);
 			return str;
 		} catch (Exception e) {
 			PrintException.printException(logger, e);
@@ -87,7 +106,7 @@ public class HttpEntity {
 				String cookieValue = "";
 				for (int i = 1; i < tmps.length; i++) {
 					cookieValue += tmps[i];
-					if (i < tmps.length) {
+					if (i < tmps.length-1) {
 						cookieValue += "=";
 					}
 				}

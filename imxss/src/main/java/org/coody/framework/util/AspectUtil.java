@@ -77,12 +77,6 @@ public class AspectUtil {
 		return sb.toString();
 	}
 
-	public static String getMethodCacheKey(Class<?> clazz,Method method){
-		String key=SimpleUtil.getMethodKey(clazz,method);
-		key=key.replace(".", "_");
-		key=key.replace(",", "_");
-		return key;
-	}
 	public static String getFieldKey(Class<?> clazz,Method method, Object[] paras,
 			String key, String[] fields){
 		if(StringUtil.isNullOrEmpty(key)){

@@ -24,7 +24,7 @@ import org.springframework.web.util.UrlPathHelper;
 
 /**
  * @remark HTTP工具类。
- * @author WebSOS
+ * @author Coody
  * @email 644556636@qq.com
  * @blog 54sb.org
  */
@@ -86,12 +86,29 @@ public class RequestUtil {
 		}
 		return request.getRemoteAddr();
 	}
+	public static String getRequestUri(HttpServletRequest request) {
+		String uri = request.getServletPath();
+		
+		String projectName = request.getContextPath();
+		if (projectName != null && !projectName.trim().equals("")) {
+			uri = uri.replace(projectName, "/");
+		}
+		uri = uri.replace("../", "/");
+		while (uri.indexOf("//") > -1) {
+			uri = uri.replace("//", "/");
+		}
+		return uri;
+	}
 
 	public static String getURLSuffix(HttpServletRequest request) {
 		String url = request.getServletPath();
 		String[] tab = url.split("\\.");
 		if (tab.length > 1) {
-			return tab[tab.length - 1];
+			String suffix= tab[tab.length - 1];
+			if(!StringUtil.isNullOrEmpty(suffix)){
+				request.setAttribute("suffix", suffix);
+			}
+			return suffix;
 		}
 		return "";
 	}
@@ -316,7 +333,7 @@ public class RequestUtil {
 		}
 		StringBuilder sb = new StringBuilder();
 		for (Cookie cook : cookies) {
-			sb.append(cook.getName()).append("=").append(cook.getValue())
+			sb.append(" "+cook.getName()).append("=").append(cook.getValue())
 					.append(";");
 		}
 		return sb.toString();

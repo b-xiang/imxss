@@ -6,13 +6,17 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 
 import org.coody.framework.context.base.BaseModel;
+import org.coody.framework.util.SimpleUtil;
 import org.coody.framework.util.StringUtil;
+
+import com.alibaba.fastjson.JSON;
 
 @SuppressWarnings("serial")
 public class CtBeanEntity extends BaseModel{
 
 	private String fieldName;
 	private Object fieldValue;
+	private String stringValue;
 	private Class<?> fieldType;
 	private List<CtAnnotationEntity> annotations;
 	private Field sourceField;
@@ -20,6 +24,15 @@ public class CtBeanEntity extends BaseModel{
 	private Boolean isFinal=false;
 	private String modifier;
 	
+	
+	
+	
+	public String getStringValue() {
+		return stringValue;
+	}
+	public void setStringValue(String stringValue) {
+		this.stringValue = stringValue;
+	}
 	public Field getSourceField() {
 		return sourceField;
 	}
@@ -69,6 +82,13 @@ public class CtBeanEntity extends BaseModel{
 		return fieldValue;
 	}
 	public void setFieldValue(Object fieldValue) {
+		if(!StringUtil.isNullOrEmpty(fieldValue)){
+			if(SimpleUtil.isSignType(fieldValue.getClass())){
+				stringValue=fieldValue.toString();
+			}else{
+				stringValue=JSON.toJSONString(fieldValue);
+			}
+		}
 		this.fieldValue = fieldValue;
 	}
 	public Class<?> getFieldType() {

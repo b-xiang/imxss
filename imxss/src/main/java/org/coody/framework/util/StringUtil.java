@@ -19,8 +19,8 @@ import org.springframework.util.AntPathMatcher;
 
 public class StringUtil {
 
-	static BaseLogger logger=BaseLogger.getLogger(StringUtil.class);
-	
+	static BaseLogger logger = BaseLogger.getLogger(StringUtil.class);
+
 	public static Integer[] getIntegerParas(Object[] objs) {
 		if (isNullOrEmpty(objs)) {
 			return null;
@@ -144,30 +144,32 @@ public class StringUtil {
 	public static List<String> textCutCenters(String allTxt, String firstTxt, String lastTxt) {
 		try {
 			List<String> results = new ArrayList<String>();
-			while(allTxt.contains(firstTxt)){
+			while (allTxt.contains(firstTxt)) {
 				int n = allTxt.indexOf(firstTxt);
-				allTxt=allTxt.substring(n+firstTxt.length(), allTxt.length());
-				n=allTxt.indexOf(lastTxt);
-				if(n==-1){
+				allTxt = allTxt.substring(n + firstTxt.length(), allTxt.length());
+				n = allTxt.indexOf(lastTxt);
+				if (n == -1) {
 					return results;
 				}
-				String result=allTxt.substring(0, n);
+				String result = allTxt.substring(0, n);
 				results.add(result);
-				allTxt=allTxt.substring(n+firstTxt.length(), allTxt.length());
+				allTxt = allTxt.substring(n + firstTxt.length(), allTxt.length());
 			}
 			return results;
 		} catch (Exception e) {
 			return null;
 		}
 	}
+
 	public static String convertToUnicode(String source) {
 		String result = "";
 		char[] chrs = source.toCharArray();
 		for (int i = 0; i < chrs.length; i++) {
-			result += "&#" +Character.codePointAt(chrs, i);
+			result += "&#" + Character.codePointAt(chrs, i);
 		}
 		return result;
 	}
+
 	public static Integer toInteger(Object obj) {
 		if (isNullOrEmpty(obj)) {
 			return null;
@@ -264,18 +266,19 @@ public class StringUtil {
 		return m.matches();
 	}
 
-	public static Boolean isAntMatch(String val,String mateher){
+	public static Boolean isAntMatch(String val, String mateher) {
 		try {
-			if(isNullOrEmpty(val)){
+			if (isNullOrEmpty(val)) {
 				return false;
 			}
-			AntPathMatcher matcher=new AntPathMatcher();
+			AntPathMatcher matcher = new AntPathMatcher();
 			return matcher.match(mateher, val);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+
 	public static boolean isMobile(String mobile) {
 		if (isNullOrEmpty(mobile)) {
 			return false;
@@ -312,7 +315,6 @@ public class StringUtil {
 		Matcher m = p.matcher(md5);
 		return m.matches();
 	}
-
 
 	public static boolean isAllNull(Object... obj) {
 		if (obj == null || obj.length == 0) {
@@ -574,8 +576,9 @@ public class StringUtil {
 	}
 
 	public static boolean hasNull(Object... objs) {
-		return findNull(objs)>-1;
+		return findNull(objs) > -1;
 	}
+
 	// 判断是否为数字
 	public static Boolean isNumber(String str) {
 		if (isNullOrEmpty(str)) {
@@ -837,7 +840,7 @@ public class StringUtil {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 是否存在乱码
 	 * 
