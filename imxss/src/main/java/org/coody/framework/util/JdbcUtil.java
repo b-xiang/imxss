@@ -14,8 +14,6 @@ import org.coody.framework.context.annotation.Column;
 import org.coody.framework.context.annotation.Table;
 import org.coody.framework.context.base.BaseLogger;
 import org.coody.framework.context.entity.BeanEntity;
-import org.coody.framework.context.entity.CtBeanEntity;
-import org.coody.framework.context.entity.CtClassEntity;
 import org.coody.framework.context.entity.Pager;
 import org.coody.framework.context.entity.SQLEntity;
 import org.coody.framework.context.entity.Where;
