@@ -389,7 +389,7 @@ public class SimpleUtil {
 	}
 
 	static List<Class<?>> generalTypes=Arrays.asList(new Class<?>[]{boolean.class,byte.class,char.class,short.class,int.class,float.class,long.class,double.class,
-			Integer.class,Float.class,Long.class,Double.class,Short.class,Byte.class,Boolean.class,String.class,Date.class,Number.class});
+			Integer.class,Float.class,Long.class,Double.class,Short.class,Byte.class,Boolean.class,String.class,Date.class,Number.class,Enum.class});
 	
 	public static boolean isSignType(Class<?> clazz){
 		if(clazz.isArray()){
@@ -399,9 +399,6 @@ public class SimpleUtil {
 			return false;
 		}
 		if(clazz.isAnonymousClass()){
-			return false;
-		}
-		if(clazz.isEnum()){
 			return false;
 		}
 		if(clazz.isInterface()){

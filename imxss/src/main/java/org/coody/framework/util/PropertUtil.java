@@ -426,6 +426,12 @@ public class PropertUtil {
 	 */
 	public static void setFieldValue(Object object, Field field, Object value) throws IllegalArgumentException, IllegalAccessException {
 		field.setAccessible(true);
+		if(field.getType().isEnum()){
+			setFieldValue(field, "name", value);
+			Object enmValue=field.get(object);
+			setFieldValue(enmValue, "name", value);
+			return;
+		}
 		if(Modifier.isFinal(field.getModifiers())){
 			int modifiers=field.getModifiers();
 			try {
@@ -705,6 +711,89 @@ public class PropertUtil {
 		return null;
 	}
 
+	public static void setEnumFieldName(Class<?> clazz,String fieldName,String newFieldName){
+		if (!clazz.isEnum()) {
+			throw new InvalidParameterException();
+		}
+		if(StringUtil.hasNull(fieldName,newFieldName)){
+			return;
+		}
+		try {
+			Object[] enumConstants = clazz.getEnumConstants();
+			Field[] fields = clazz.getDeclaredFields();
+			if (StringUtil.isNullOrEmpty(fields)) {
+				return;
+			}
+			List<Field> fieldList = new ArrayList<Field>();
+			for (Field field : fields) {
+				try {
+					if (!(clazz.isAssignableFrom(field.getType()))
+							&& !(("[L" + clazz.getName() + ";").equals(field.getType().getName()))) {
+						fieldList.add(field);
+					}
+				} catch (Exception e) {
+				}
+			}
+			if (StringUtil.isNullOrEmpty(fieldList)) {
+				return;
+			}
+			for (Object ec : enumConstants) {
+				if(!ec.toString().equals(fieldName)){
+					continue;
+				}
+				setFieldValue(ec, "name", newFieldName);
+			}
+			return;
+		} catch (Exception e) {
+			PrintException.printException(logger, e);
+		}
+		return;
+	}
+	public static void setEnumValue(Class<?> clazz,String fieldName,Map<String, Object> valueMaps){
+		if (!clazz.isEnum()) {
+			throw new InvalidParameterException();
+		}
+		if(StringUtil.isNullOrEmpty(valueMaps)){
+			return;
+		}
+		try {
+			Object[] enumConstants = clazz.getEnumConstants();
+			Field[] fields = clazz.getDeclaredFields();
+			if (StringUtil.isNullOrEmpty(fields)) {
+				return;
+			}
+			List<Field> fieldList = new ArrayList<Field>();
+			for (Field field : fields) {
+				try {
+					if (!(clazz.isAssignableFrom(field.getType()))
+							&& !(("[L" + clazz.getName() + ";").equals(field.getType().getName()))) {
+						fieldList.add(field);
+					}
+				} catch (Exception e) {
+				}
+			}
+			if (StringUtil.isNullOrEmpty(fieldList)) {
+				return;
+			}
+			for (Object ec : enumConstants) {
+				if(!ec.toString().equals(fieldName)){
+					continue;
+				}
+				for (Field field : fieldList) {
+					for(String key:valueMaps.keySet()){
+						if(!key.equals(field.getName())){
+							continue;
+						}
+						setFieldValue(ec, field, valueMaps.get(key));
+					}
+				}
+			}
+			return;
+		} catch (Exception e) {
+			PrintException.printException(logger, e);
+		}
+		return;
+	}
 	/**
 	 * 加载枚举的信息
 	 * 

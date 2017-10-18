@@ -1,95 +1,28 @@
 package org.coody.framework.util;
 
+import java.awt.Image;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.coody.framework.context.entity.Record;
+import org.coody.framework.context.entity.HttpEntity;
 
+import com.ezone.web.util.BaiduHttpUtil;
 
 /**
-
- * 2014-09-16
-
  * 
-
- * @author WebSOS QQ:644556636 bkkill.com
-
+ * 2014-09-16
+ * 
+ * 
+ * 
+ * @author Coody QQ:644556636 bkkill.com
+ * 
  */
-@SuppressWarnings("deprecation")
 public class UploadUtil {
-	private static final List<String> suffixs = Arrays.asList(new String[]{ "gif", "jpg", "jpeg", "bmp", "png" });
 
-	public static String doUpload(HttpServletRequest request) {
 
-		Record files = UploadUtil.doUploads(request);
-		if (StringUtil.isNullOrEmpty(files)) {
-			return null;
-		}
-		for (String key : files.keySet()) {
-			return (String) files.get(key);
-		}
-		return null;
-	}
-
-	
-	public static Record doUploads(HttpServletRequest request) {
-		try {
-			List<?> items = getItems(request);
-			Record fileRec = new Record();
-			String dir = request.getRealPath("/");
-			String path = "upload/" + getPath();
-			createDir(dir, path);
-			for (Iterator<?> it = items.iterator(); it.hasNext();) {
-				try {
-					FileItem item = (FileItem) it.next();
-					// 判断是否为表单域
-
-					if (item.isFormField()) {
-						continue;
-					}
-					// 获取文件字段名
-
-					String fieldName = item.getFieldName();
-					// 获取文件名
-
-					String fileName = item.getName();
-					// 获得文件类型
-
-					String suffix = getSuffix(fileName);
-					if (!suffixs.contains(suffix)) {
-						continue;
-					}
-					path += ("/" + JUUIDUtil.createUuid() + "." + suffix);
-					if (writeFile(item, dir, path)) {
-						fileRec.put(fieldName, RequestUtil.loadBasePath(request)
-								+ path.replace("\\", "/"));
-					}
-				} catch (Exception e) {
-				} finally {
-				}
-			}
-			if (StringUtil.isNullOrEmpty(fileRec)) {
-				return null;
-			}
-			return fileRec;
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 	public static String getSuffix(String fileName) {
 		if (StringUtil.isNullOrEmpty(fileName)) {
@@ -99,73 +32,48 @@ public class UploadUtil {
 		return strs[strs.length - 1].toLowerCase();
 	}
 
-	private static void createDir(String dir, String path) {
-		try {
-			String uri = dir + path;
-			uri = uri.replace("\\", "/");
-			if (!new File(uri).exists()) {
-				System.out.println("创建文件夹：" + uri);
-				new File(uri).mkdirs();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	public static final InputStream byte2Input(byte[] buf) {
 		return new ByteArrayInputStream(buf);
 	}
 
-	private static String getPath() {
-		Calendar a = Calendar.getInstance();
-		return a.get(Calendar.YEAR) + "/" + (a.get(Calendar.MONTH) + 1) + "/"
-				+ (a.get(Calendar.DATE));
-	}
 
-	private static Boolean writeFile(FileItem item, String webDir, String uri) {
-		FileOutputStream fos = null;
-		try {
-			fos = new FileOutputStream(webDir + uri);
-			InputStream is = item.getInputStream();
-			byte[] buffer = new byte[1024];
-			int len;
-			while ((len = is.read(buffer)) > 1) {
-				fos.write(buffer, 0, len);
-			}
-			is.close();
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				fos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public static String doDown(String url) throws Exception {
+		BaiduHttpUtil http=new BaiduHttpUtil();
+		HttpEntity entity = http.Get(url);
+		if (entity == null || entity.getBye() == null) {
+			throw new Exception("图片下载失败");
 		}
-		return false;
-	}
-
-	private static List<?> getItems(HttpServletRequest request) {
 		try {
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			factory.setSizeThreshold(1024 * 1024 * 20);
-			factory.setRepository(new File(request.getRealPath("/")));
-			ServletFileUpload upload = new ServletFileUpload(factory);
-			upload.setSizeMax(1024 * 1024 * 20);
-			List<?> items = upload.parseRequest(request);
-			return items;
+			Image srcImg = ImageIO.read(byte2Input(entity.getBye()));
+			if (srcImg == null||StringUtil.isNullOrEmpty(System.getProperty("ezone.root"))) {
+				throw new Exception("图片下载失败");
+			}
+			String path = System.getProperty("ezone.root") + "upload";
+			path += (new URL(url).getPath());
+			FileUtils.makeFileDir(path);
+			FileUtils.writeFile(path, GZIPUtils.compress(entity.getBye()));
+			return   "/upload"+(new URL(url).getPath());
 		} catch (Exception e) {
-			return null;
+			throw e;
 		}
 	}
+	
 
 	public static void main(String[] args) {
 		try {
-			FileInputStream input=new FileInputStream(
-					new File("d:/test/6B459B4FC0610246FD834290DE3C8126.png"));
-			ImageIO.read(input);
+			String path = "D:/Java/workspaces/.metadata/.me_tcat85/webapps/ezone/upload/img/2015/11/10/100715335.png";
+			while (path.contains("\\")) {
+				path = path.replace("/", "/");
+			}
+			while (path.contains("//")) {
+				path = path.replace("//", "/");
+			}
+			int lastTag=path.lastIndexOf('/');
+			if(lastTag==-1){
+				return;
+			}
+			path=path.substring(0,lastTag);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
