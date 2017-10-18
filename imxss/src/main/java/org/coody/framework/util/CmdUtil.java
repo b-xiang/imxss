@@ -168,4 +168,19 @@ public class CmdUtil {
 		return respVO;
 	}
 	
+	public static void main(String[] args) {
+		String currMatcher = null;
+		String [] format={ParaCheckFinal.EMAIL,ParaCheckFinal.USER_NAME};
+		String fieldValue="38069189@qq.com";
+		for (String matcher : format) {
+			if (StringUtil.isMatcher(fieldValue.toString(), matcher)) {
+				currMatcher=null;
+				break;
+			}
+			currMatcher = matcher;
+		}
+		if (!StringUtil.isNullOrEmpty(currMatcher)) {
+			return;
+		}
+	}
 }

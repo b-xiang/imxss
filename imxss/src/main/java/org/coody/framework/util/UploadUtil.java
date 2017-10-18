@@ -104,6 +104,7 @@ public class UploadUtil {
 			String uri = dir + path;
 			uri = uri.replace("\\", "/");
 			if (!new File(uri).exists()) {
+				System.out.println("创建文件夹：" + uri);
 				new File(uri).mkdirs();
 			}
 		} catch (Exception e) {

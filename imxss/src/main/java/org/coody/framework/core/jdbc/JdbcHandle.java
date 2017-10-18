@@ -196,17 +196,16 @@ public class JdbcHandle {
 	 * @param paras 参数列表
 	 * @return
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public <T> List<T> queryAuto(Class<?> clazz,String sql, Object... paras) {
 		List<Map<String, Object>> records = query(sql, paras);
 		if (StringUtil.isNullOrEmpty(records)) {
 			return null;
 		}
-		Map<String, Object> rec = records.get(0);
 		if(BaseModel.class.isAssignableFrom(clazz)){
 			List<T> list=new ArrayList<T>();
 			for(Map<String, Object> line:records){
-				T t= PropertUtil.mapToModel(rec, clazz);
+				T t= PropertUtil.mapToModel(line, clazz);
 				if(!StringUtil.isNullOrEmpty(t)){
 					list.add(t);
 				}
@@ -636,7 +635,30 @@ public class JdbcHandle {
 		return pager;
 	}
 
-	
+	/**
+	 * 分页查询
+	 * 
+	 * @param obj
+	 *            对象条件
+	 * @param where
+	 *            where条件
+	 * @param pager
+	 *            分页条件
+	 * @return
+	 */
+	public Pager findFieldPager(Object obj, String queryField,Where where, Pager pager
+			) {
+		SQLEntity sqlEntity = JdbcUtil.parseSQL(obj, where, pager, null,
+				null);
+		sqlEntity.setSql(sqlEntity.getSql().replace("select *", "select "+queryField));
+		Integer totalRows = getCount(sqlEntity.getSql(), sqlEntity.getParams());
+		pager.setTotalRows(totalRows);
+		List<Map<String, Object>> list = baseQuery(sqlEntity.getSql(),
+				sqlEntity.getParams());
+		List<?> objList = JdbcUtil.parseBeans(getObjectClass(obj), list);
+		pager.setData(objList);
+		return pager;
+	}
 
 	/**
 	 * 根据语句和条件查询总记录数

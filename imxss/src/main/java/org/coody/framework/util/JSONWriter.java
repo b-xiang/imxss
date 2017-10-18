@@ -14,7 +14,7 @@ import org.coody.framework.context.entity.BeanEntity;
 
 /**
  * @remark json工具类,此工具类修改过N次。改的脖子好痛啊，总算走向成熟。
- * @author WebSOS
+ * @author Coody
  * @email 644556636@qq.com
  * @blog 54sb.org
  */

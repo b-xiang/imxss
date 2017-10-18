@@ -156,6 +156,9 @@ public class FileUtils {
 	public static byte[] readFileByte(String path) {
 		try {
 			File file = new File(URLDecoder.decode(path));
+			if(!file.exists()){
+				return null;
+			}
 			long fileSize = file.length();
 			if (fileSize > Integer.MAX_VALUE) {
 				return null;
@@ -306,5 +309,21 @@ public class FileUtils {
 		}
 
 	}
-
+	
+	public static void makeFileDir(String path){
+		while (path.contains("\\")) {
+			path = path.replace("\\", "/");
+		}
+		while (path.contains("//")) {
+			path = path.replace("//", "/");
+		}
+		int lastTag=path.lastIndexOf('/');
+		if(lastTag==-1){
+			return;
+		}
+		path=path.substring(0,lastTag);
+		if (!new File(path).exists()) {
+			new File(path).mkdirs();
+		}
+	}
 }

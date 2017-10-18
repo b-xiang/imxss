@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 /**
  * 阻塞模式线程池
  * 
- * @author WebSOS
+ * @author Coody
  * @blog http://54sb.org
  *
  */

@@ -388,6 +388,36 @@ public class SimpleUtil {
 		return methods;
 	}
 
+	static List<Class<?>> generalTypes=Arrays.asList(new Class<?>[]{boolean.class,byte.class,char.class,short.class,int.class,float.class,long.class,double.class,
+			Integer.class,Float.class,Long.class,Double.class,Short.class,Byte.class,Boolean.class,String.class,Date.class,Number.class});
+	
+	public static boolean isSignType(Class<?> clazz){
+		if(clazz.isArray()){
+			return false;
+		}
+		if(clazz.isAnnotation()){
+			return false;
+		}
+		if(clazz.isAnonymousClass()){
+			return false;
+		}
+		if(clazz.isEnum()){
+			return false;
+		}
+		if(clazz.isInterface()){
+			return false;
+		}
+		
+		if(generalTypes.contains(clazz)){
+			return true;
+		}
+		for(Class<?> cla:generalTypes){
+			if(cla.isAssignableFrom(clazz)){
+				return true;
+			}
+		}
+		return false;
+	}
 	public static List<Method> loadSourceMethods(Class<?> clazz) {
 		List<Method> methods = new ArrayList<Method>(
 				Arrays.<Method> asList(clazz.getDeclaredMethods()));

@@ -14,7 +14,7 @@ import org.coody.framework.util.StringUtil;
 /**
  * @className：CacheHandler
  * @description：缓存操作类，对缓存进行管理,清除方式采用Timer定时的方式
- * @creater：Websos
+ * @creater：Coody
  * @creatTime：2014年5月7日 上午9:18:54
  * @remark：
  * @version
@@ -148,9 +148,9 @@ public class LocalCache {
 	 * @projName：lottery
 	 * @className：TimeoutTimerTask
 	 * @description：清除超时缓存定时服务类
-	 * @creater：WebSOS
+	 * @creater：Coody
 	 * @creatTime：2014年5月7日上午9:34:39
-	 * @alter：WebSOS
+	 * @alter：Coody
 	 * @alterTime：2014年5月7日 上午9:34:39
 	 * @remark：
 	 * @version

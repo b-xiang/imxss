@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * 2014-05-21
  * 容器，基于MAP封装
- * @author WebSOS
+ * @author Coody
  * QQ:644556636
  * 54sb.org
  */

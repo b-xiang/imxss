@@ -8,7 +8,7 @@ import org.coody.framework.context.enm.MsgEnum;
 
 /**
  * @remark 消息机制容器。
- * @author WebSOS
+ * @author Coody
  * @email 644556636@qq.com
  * @blog 54sb.org
  */

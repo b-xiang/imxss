@@ -114,7 +114,7 @@ public class AppAspect {
 			String key = handle.key();
 			try {
 				if (StringUtil.isNullOrEmpty(key)) {
-					key = AspectUtil.getMethodCacheKey(clazz,method);
+					key = SimpleUtil.getMethodCacheKey(clazz,method);
 				}
 				if (StringUtil.isNullOrEmpty(handle.fields())) {
 					String paraKey=AspectUtil.getBeanKey(paras);
@@ -186,7 +186,7 @@ public class AppAspect {
 				try {
 					String key = handle.key();
 					if (StringUtil.isNullOrEmpty(handle.key())) {
-						key = (AspectUtil.getMethodCacheKey(clazz,method));
+						key = (SimpleUtil.getMethodCacheKey(clazz,method));
 					}
 					if (!StringUtil.isNullOrEmpty(handle.fields())) {
 						key = AspectUtil.getFieldKey(clazz,method, paras, key,
@@ -248,7 +248,7 @@ public class AppAspect {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Around("execution(* com.imxss.web..*.*(..)))")
+	@Around("execution(* com.ezone.web..*.*(..)))")
 	public Object aServiceMonitor(ProceedingJoinPoint pjp) throws Throwable {
 		StopWatch sw = new StopWatch(getClass().getSimpleName());
 		try {

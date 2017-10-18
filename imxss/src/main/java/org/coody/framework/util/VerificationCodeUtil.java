@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * 图片文字验证码生成类
  * 
- * @author WebSOS
+ * @author Coody
  * @version 1.0 2014-8-29
  */
 public class VerificationCodeUtil {

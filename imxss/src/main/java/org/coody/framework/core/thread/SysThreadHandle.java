@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class SysThreadHandle {
-	public static final int CORESIZE_NORMAL=10;
+	public static final int CORESIZE_NORMAL=18;
 	public static final int MAXCORESIZE = 100;
 	public static final int KEEPALIVETIME = 10;  //10s
 	public static final ExecutorService  sysThreadPool =  new ThreadPoolExecutor(CORESIZE_NORMAL,MAXCORESIZE,
