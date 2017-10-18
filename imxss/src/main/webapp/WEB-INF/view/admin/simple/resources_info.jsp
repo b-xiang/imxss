@@ -144,7 +144,7 @@ ${code}
 																			${field.fieldType.name}&nbsp;&nbsp;<span class="para">${field.fieldName }</span>
 																			&nbsp;=&nbsp; <input class="blue am-monospace"
 																				style="border-style:none" name="fieldValue"
-																				value="${field.fieldValue==null?'null':fn:replace(fn:replace(field.fieldValue, '\"', ''),'\'','') }">
+																				value="${field.stringValue==null?'null':fn:replace(field.stringValue, '\"', '&quot;') }">
 																		</div>
 																		<input type="hidden" name="file" value="${file }">
 																		<input type="hidden" name="fieldName"
