@@ -101,9 +101,19 @@ ${code}
 
 											<c:if test="${!empty classInfo.enumInfo }">
 												<table class="am-table am-table-bordered">
-													<c:forEach items="${classInfo.enumInfo }" var="enumInfo">
+													<c:forEach items="${classInfo.enumInfo }" var="enumInfo" varStatus="index">
 														<tr>
-															<td><span class="blue">${enumInfo.key }</span>(${enumInfo.value.getMap() })
+															<td><form id="enumForm${index.index }"
+																	onsubmit="return false">
+																	<span class="blue">${enumInfo.key }</span>=<input
+																		class="blue am-monospace" style="border-style:none;width:80%"	name="fieldValue" value="${fn:replace(enumInfo.value, '\"', '&quot;')}" />
+															<input type="hidden" name="file" value="${file }">
+															<input type="hidden" name="fieldName"
+																			value="${enumInfo.key}"> <input
+																			type="button" onclick="saveEnum(${index.index})"
+																			value="保存"
+																			class="am-btn am-btn-default am-btn-xs right">
+																			</form>
 															</td>
 														</tr>
 													</c:forEach>
@@ -252,6 +262,28 @@ ${code}
 			}
 		});
 	}
+	function saveEnum(index) {
+		var formName = "#enumForm" + index;
+		$.ajax({
+			async : true,
+			cache : false,
+			type : "POST",
+			dataType : 'json',
+			data : $(formName).serialize(),
+			url : 'modifyEnm.${defSuffix}',
+			timeout : 60000,
+			success : function(json) {
+				alert(json.msg);
+				if (json.code == 0) {
+					location.reload(true);
+				}
+			},
+			error : function() {
+				alert("系统繁忙");
+			}
+		});
+	}
+	
 
 	$(function() {
 		var html = $("#resourcesDiv").html();
