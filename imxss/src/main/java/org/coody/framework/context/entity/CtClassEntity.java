@@ -1,10 +1,14 @@
 package org.coody.framework.context.entity;
 
 import java.lang.reflect.Modifier;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.coody.framework.context.base.BaseModel;
+import org.coody.framework.util.StringUtil;
+
+import com.alibaba.fastjson.JSON;
 
 @SuppressWarnings("serial")
 public class CtClassEntity extends BaseModel {
@@ -33,7 +37,7 @@ public class CtClassEntity extends BaseModel {
 	
 	private Class<?> [] interfaces;
 	
-	private Map<String,Record> enumInfo;
+	private Map<String,String> enumInfo;
 	
 
 	public Boolean getIsFinal() {
@@ -157,13 +161,24 @@ public class CtClassEntity extends BaseModel {
 	}
 
 
-	public Map<String, Record> getEnumInfo() {
+	public Map<String, String> getEnumInfo() {
 		return enumInfo;
 	}
 
 
 	public void setEnumInfo(Map<String, Record> enumInfo) {
-		this.enumInfo = enumInfo;
+		if(StringUtil.isNullOrEmpty(enumInfo)){
+			return ;
+		}
+		Map<String, String> map=new HashMap<String, String>();
+		for(String key:enumInfo.keySet()){
+			try {
+				map.put(key, JSON.toJSONString(enumInfo.get(key)));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		this.enumInfo=map;
 	}
 
 }

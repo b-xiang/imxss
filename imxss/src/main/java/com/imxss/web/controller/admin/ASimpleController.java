@@ -8,6 +8,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +43,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.imxss.web.constant.CacheFinal;
 import com.imxss.web.service.IpService;
 
@@ -145,14 +147,21 @@ public class ASimpleController extends BaseController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		for (CtBeanEntity field : clazz.getFields()) {
 			try {
+				System.out.println(field.getFieldName());
 				if (field.getFieldName().equals(fieldName)) {
 					Field sourceField = field.getSourceField();
-					value=PropertUtil.parseValue(value, field.getFieldType());
-					if(Modifier.isStatic(sourceField.getModifiers())){
-						bean=null;
+					if (!SimpleUtil.isSignType(field.getSourceField().getType())) {
+						try {
+							value = JSON.parseObject(value.toString(), field.getFieldType());
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+					}
+					if (Modifier.isStatic(sourceField.getModifiers())) {
+						bean = null;
 					}
 					PropertUtil.setFieldValue(bean, sourceField, value);
 					return new MsgEntity(0, "操作成功");
@@ -163,6 +172,26 @@ public class ASimpleController extends BaseController {
 			}
 		}
 		return new MsgEntity(-1, "字段不存在");
+	}
+
+	@RequestMapping(value = "/modifyEnm")
+	@Power("resources")
+	@ResponseBody
+	@LogHead("资源管理-枚举值修改")
+	public Object modifyEnm(HttpServletRequest req, HttpServletResponse res) {
+		CtClassEntity clazz = loadClassEntity();
+		String fieldName = getPara("fieldName");
+		Object value = getPara("fieldValue");
+		try {
+			Map<String, Object> valueMap = JSON.parseObject(value == null ? null : value.toString(),
+					new TypeReference<Map<String, Object>>() {
+					});
+			PropertUtil.setEnumValue(clazz.getSourceClass(), fieldName, valueMap);
+			return  new MsgEntity(0, "操作成功");
+		} catch (Exception e) {
+			PrintException.printException(logger, e);
+			return new MsgEntity(-1, "修改失败");
+		}
 	}
 
 	@RequestMapping(value = "/monitorList")
