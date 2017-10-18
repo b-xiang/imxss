@@ -351,7 +351,6 @@ public class ASimpleController extends BaseController {
 			packet = packet.replace("/", ".");
 			if(packet.toLowerCase().endsWith(".class")){
 				packet = packet.substring(0, packet.length()-".class".length());
-				System.out.println(packet);
 			}
 			logger.info("加载类："+packet);
 			Class<?> clazz = Class.forName(packet);

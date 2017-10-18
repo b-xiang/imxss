@@ -868,7 +868,6 @@ public class JdbcHandle {
 		}
 		sql.append(diySql);
 		sql.append(" ON DUPLICATE KEY UPDATE ");
-		System.out.println();
 		diySql=parseFieldSql(obj,paras,addFields);
 		sql.append(diySql);
 		return baseUpdate(sql.toString(),paras.toArray());

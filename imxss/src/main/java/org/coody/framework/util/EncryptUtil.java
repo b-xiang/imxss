@@ -151,7 +151,6 @@ public final class EncryptUtil {
 	
 	public static void main(String[] args) throws Exception {
 		
-		System.out.println(customEnCode("111111"));
 	}
 
 }
