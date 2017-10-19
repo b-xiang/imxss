@@ -1,13 +1,8 @@
 package org.coody.framework.context.enm;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.coody.framework.util.PropertUtil;
-import org.coody.framework.util.SimpleUtil;
-
-import com.alibaba.fastjson.JSON;
 
 public enum MsgEnum {
 
