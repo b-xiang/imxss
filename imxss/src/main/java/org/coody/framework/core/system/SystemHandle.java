@@ -28,10 +28,10 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SystemHandle implements InitializingBean{
+public class SystemHandle implements InitializingBean {
 
 	private static final BaseLogger logger = BaseLogger.getLoggerPro(SystemHandle.class);
-	
+
 	// 本项目运行目录
 	public static String rootPath;
 	// 操作系统信息
@@ -76,13 +76,9 @@ public class SystemHandle implements InitializingBean{
 		}
 	}
 
-	
-	
 	public static JavaInfo getJavaInfo() {
 		return new JavaInfo();
 	}
-
-
 
 	// 获取CPU使用信息
 	public static List<CpuModel> getCpuInfos() {
@@ -127,7 +123,7 @@ public class SystemHandle implements InitializingBean{
 			Runtime r = Runtime.getRuntime();
 			Properties props = System.getProperties();
 			this.javaTotalMemory = r.maxMemory() / 1024L / 1024L;
-			this.javaFreeMemory = r.freeMemory()/1024L/1024L;
+			this.javaFreeMemory = r.freeMemory() / 1024L / 1024L;
 			this.availableProcessors = r.availableProcessors();
 			this.javaVersion = StringUtil.toString(props.getProperty("java.version"));
 		}
@@ -641,6 +637,9 @@ public class SystemHandle implements InitializingBean{
 		}
 
 		public String getUserName() {
+			if (StringUtil.isNullOrEmpty(userName)) {
+				userName = getPcUserName();
+			}
 			return userName;
 		}
 
