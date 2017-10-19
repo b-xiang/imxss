@@ -36,6 +36,12 @@ public class PropertUtil {
 	private static LocalVariableTableParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
 	protected static final BaseLogger logger = BaseLogger.getLogger(PropertUtil.class);
 
+	
+	public static void reload(){
+		fieldMap.clear();
+		methodMap.clear();
+		paramMap.clear();
+	}
 	/**
 	 * 获取对象多个字段的值
 	 * 
