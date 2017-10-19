@@ -164,6 +164,7 @@ public class ASimpleController extends BaseController {
 						bean = null;
 					}
 					PropertUtil.setFieldValue(bean, sourceField, value);
+					PropertUtil.reload();
 					return new MsgEntity(0, "操作成功");
 				}
 			} catch (Exception e) {
@@ -187,6 +188,7 @@ public class ASimpleController extends BaseController {
 					new TypeReference<Map<String, Object>>() {
 					});
 			PropertUtil.setEnumValue(clazz.getSourceClass(), fieldName, valueMap);
+			PropertUtil.reload();
 			return  new MsgEntity(0, "操作成功");
 		} catch (Exception e) {
 			PrintException.printException(logger, e);
