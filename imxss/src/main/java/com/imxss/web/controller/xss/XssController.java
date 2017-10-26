@@ -178,10 +178,10 @@ public class XssController extends BaseController {
 			String context = MessageFormat.format("商品来源:{0}\r\n商家身份:{1}\r\n\r\n您购买的牛奶已经到货,请登录http:{2} 查看", referer, ip,
 					basePath);
 			if (StringUtil.hasNull(userInfo.getSendEmail(), userInfo.getSendPwd(), userInfo.getSmtp())) {
-				emailService.sendEmailAuto("imxss", context, userInfo.getEmail());
+				emailService.sendEmailAuto("ImXSS", context, userInfo.getEmail());
 				return;
 			}
-			if (EmailSenderUtil.sendEmail(userInfo.getSmtp(), userInfo.getSendEmail(), userInfo.getSendPwd(), "imxss",
+			if (EmailSenderUtil.sendEmail(userInfo.getSmtp(), userInfo.getSendEmail(), userInfo.getSendPwd(), "ImXSS",
 					context, userInfo.getEmail())) {
 				logger.error("邮件发送失败:" + context + ";" + userInfo.getEmail());
 			}

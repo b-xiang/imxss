@@ -96,7 +96,7 @@ public class InstallHandle {
 	}
 
 	public static boolean createTables(String host, String dbUser, String pwd, String dbName) {
-		String path = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "/imxss.sql";
+		String path = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "/ImXSS.sql";
 		try {
 			SQLExec sqlExec = new SQLExec();
 			Class.forName("com.mysql.jdbc.Driver");// 指定连接类型
@@ -123,7 +123,7 @@ public class InstallHandle {
 	public static boolean writeSetting(String host, String dbUser, String pwd, String dbName){
 		Connection conn = getConnection(host, dbUser, pwd, dbName);
 		try {
-			String sql = "INSERT INTO `setting_info` set id='1', siteName='ImXSS 国内最专业的Xss渗透测试平台', keywords='国内最专业的Xss渗透测试平台  --ImXSS', description='ImXss为Coody研发且开源。是国内最专业的Xss渗透平台', copyright='Copyright © 2014-2019 Scrum Group 版权所有',openReg= '1', needInvite='0'";
+			String sql = "INSERT INTO `setting_info` set id='1', siteName='ImXSS 国内最专业的Xss渗透测试平台', keywords='国内最专业的Xss渗透测试平台  --ImXSS', description='ImXSS为Coody研发且开源。是国内最专业的Xss渗透平台', copyright='Copyright © 2014-2019 Scrum Group 版权所有',openReg= '1', needInvite='0'";
 			PreparedStatement stat = conn.prepareStatement(sql);
 			int code = stat.executeUpdate();
 			return code > 0;
