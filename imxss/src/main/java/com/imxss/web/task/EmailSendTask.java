@@ -7,9 +7,6 @@ import javax.annotation.Resource;
 import org.coody.framework.context.annotation.LogHead;
 import org.coody.framework.core.thread.ThreadBlockHandle;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.config.CronTask;
-import org.springframework.scheduling.config.ScheduledTask;
-import org.springframework.scheduling.config.SchedulerBeanDefinitionParser;
 import org.springframework.stereotype.Component;
 
 import com.imxss.web.domain.EmailQueue;
