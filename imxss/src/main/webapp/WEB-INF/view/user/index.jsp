@@ -19,14 +19,14 @@
 		<div class="tpl-content-wrapper">
 			<div class="tpl-content-page-title">用户首页</div>
 			<ol class="am-breadcrumb">
-				<li><a href="#" class="am-icon-home">ImXss</a></li>
+				<li><a href="#" class="am-icon-home">ImXSS</a></li>
 				<li class="am-active">用户首页</li>
 			</ol>
 			<div class="tpl-content-scope">
 				<div class="note note-info">
-					<p>ImXss为国内最专业的Xss跨站脚本平台，包含各种人性化用户设置功能，可用于Xss跨站脚本漏洞测试，支持自建模块、自填发信邮箱、为收信来源地址定制模块、屏蔽来源地址等功能。</p>
+					<p>ImXSS为国内最专业的Xss跨站脚本平台，包含各种人性化用户设置功能，可用于Xss跨站脚本漏洞测试，支持自建模块、自填发信邮箱、为收信来源地址定制模块、屏蔽来源地址等功能。</p>
 					<p>
-						ImXss新版于2017-07-11日开始研发，2017-07-13内测上线，欢迎友友们反馈使用过程中碰到的问题。
+						ImXSS新版于2017-07-11日开始研发，2017-07-13内测上线，欢迎友友们反馈使用过程中碰到的问题。
 					</p>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 				</div>
 				<div class="am-panel-bd">
 					<p>感谢大家使用这套系统，感谢大家默默无闻的支持，这将是我研发的动力。</p>
-					<p>由于ImXss前身版本的一些缺陷，笔者从零开始重新研发本套系统，正式上线将定名：ImXSS</p>
+					<p>由于ImXSS前身版本的一些缺陷，笔者从零开始重新研发本套系统，正式上线将定名：ImXSS</p>
 					<p>本次版本持有高效、稳定、低负载的特征，且前端页面可在手机上操作，修复了前版本的痛点</p>
 					<p>请原谅笔者不会前端技术，本系统前端采用开源模板，各种抄改，拼凑起来的</p>
 					<p>本系统为技术交流而生，永不收费，请勿用于非法用途，后果自负</p>
