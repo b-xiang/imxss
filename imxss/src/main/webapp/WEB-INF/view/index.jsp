@@ -36,7 +36,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand topnav" href="#">Scrum Group Xss 运营管理平台</a>
+				<a class="navbar-brand topnav" href="#">404实验室 Xss 运营管理平台</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
@@ -61,7 +61,7 @@
 				<div class="col-lg-12">
 					<div class="intro-message">
 						<h1>ImXSS</h1>
-						<h3>一个专业的xss渗透测试平台,PROWER BY Scrum</h3>
+						<h3>一个专业的xss渗透测试平台,PROWER BY Coody</h3>
 						<hr class="intro-divider">
 						<ul class="list-inline intro-social-buttons">
 							<li><a href="${basePath }login.${defSuffix}"
@@ -98,11 +98,11 @@
 					<hr class="section-heading-spacer">
 					<div class="clearfix"></div>
 					<h2 class="section-heading">
-						Scrum Group Xss WebAPP:<br>
+						404实验室 Xss WebAPP:<br>
 					</h2>
 					<p class="lead">
 						Prower By <a target="_blank"
-							href="//user.qzone.qq.com/644556636">Scrum</a>
+							href="//user.qzone.qq.com/644556636">404实验室</a>
 						最新XSS安全测试,专业打造XSS漏洞测试系统。为广大网络安全人员提供XSS渗透测试平台
 					</p>
 				</div>
@@ -127,10 +127,10 @@
 					<hr class="section-heading-spacer">
 					<div class="clearfix"></div>
 					<h2 class="section-heading">
-						或许我们并不知道<br>Scrum
+						或许我们并不知道<br>Coody
 					</h2>
 					<p class="lead">
-						其实 <a target="_blank" href="//user.qzone.qq.com/644556636">Scrum团队</a>根本不会技术,
+						其实 <a target="_blank" href="//user.qzone.qq.com/644556636">Coody</a>根本不会技术,
 						这个团队也是非常脆弱,他们写代码都是copy来的,以至于做完了整套XSS系统,都不知道这copy来的是什么语言
 					</p>
 				</div>
@@ -155,7 +155,7 @@
 					<hr class="section-heading-spacer">
 					<div class="clearfix"></div>
 					<h2 class="section-heading">
-						代码描绘人生<br>Scrum Group
+						Coody<br>404实验室
 					</h2>
 					<p class="lead">
 						我们是来自全国各地的 网络安全不知名小啰啰,
@@ -214,7 +214,7 @@
 					<ul class="list-inline">
 						<li><a href="#">首页</a></li>
 						<li class="footer-menu-divider">&sdot;</li>
-						<li><a href="#about">关于Scrum</a></li>
+						<li><a href="#about">关于Coody</a></li>
 						<li class="footer-menu-divider">&sdot;</li>
 						<li><a href="#services">系统说明</a></li>
 						<li class="footer-menu-divider">&sdot;</li>
