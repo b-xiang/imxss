@@ -72,7 +72,7 @@
 								class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i>
 									<span class="network-name">注册</span></a></li>
 							<li><a
-								href="tencent://message/?uin=644556636&Site=WebSOS'S Group&menu=yes"
+								href="tencent://message/?uin=644556636&Site=ImXSS&menu=yes"
 								class="btn btn-default btn-lg"><i
 									class="fa fa-linkedin fa-fw"></i> <span class="network-name">联系</span>Leader</a>
 							</li>
@@ -102,7 +102,7 @@
 					</h2>
 					<p class="lead">
 						Prower By <a target="_blank"
-							href="//user.qzone.qq.com/644556636">404实验室</a>
+							href="http://404test.com">404实验室</a>
 						最新XSS安全测试,专业打造XSS漏洞测试系统。为广大网络安全人员提供XSS渗透测试平台
 					</p>
 				</div>
@@ -181,7 +181,7 @@
 
 			<div class="row">
 				<div class="col-lg-6">
-					<h2>Email:644556636@qq.com</h2>
+					<h2>Email:root@404test.com</h2>
 				</div>
 				<div class="col-lg-6">
 					<ul class="list-inline banner-social-buttons">
@@ -192,7 +192,7 @@
 							class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i>
 								<span class="network-name">注册</span></a></li>
 						<li><a
-							href="tencent://message/?uin=644556636&Site=WebSOS'S Group&menu=yes"
+							href="tencent://message/?uin=644556636&Site=ImXSS&menu=yes"
 							class="btn btn-default btn-lg"><i
 								class="fa fa-linkedin fa-fw"></i> <span class="network-name">联系作者</span></a>
 						</li>
