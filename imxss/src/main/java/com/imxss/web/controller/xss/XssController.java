@@ -107,7 +107,7 @@ public class XssController extends BaseController {
 				}
 			});
 		} catch (Exception e) {
-			// TODO: handle exception
+			PrintException.printException(logger, e);
 		} finally {
 			res.setStatus(404);
 		}
