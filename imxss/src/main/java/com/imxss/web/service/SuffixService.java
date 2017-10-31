@@ -57,8 +57,8 @@ public class SuffixService {
 	@CacheWipe(key=CacheFinal.DEFAULT_SUFFIXS)
 	public Long updateStatus(String suffix,Integer status){
 		if(status==2){
-			String sql="update suffix_info set status=1 where status=2";
-			Long code=jdbcHandle.doUpdate(sql);
+			String sql="update suffix_info set status=? where suffix=?";
+			Long code=jdbcHandle.doUpdate(sql,status,suffix);
 			if(code<1){
 				return code;
 			}
