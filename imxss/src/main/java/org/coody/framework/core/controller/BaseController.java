@@ -130,6 +130,10 @@ public abstract class BaseController{
 	protected void setSessionPara(String paraName, Object obj) {
 		request.getSession().setAttribute(paraName, obj);
 	}
+	
+	protected void removeSessionPara(String paraName) {
+		request.getSession().removeAttribute(paraName);
+	}
 
 	protected Object getAttribute(String paraName) {
 		return request.getAttribute(paraName);

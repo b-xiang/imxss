@@ -39,7 +39,7 @@ public class ASuffixController extends BaseController{
 		if(code<1){
 			return new MsgEntity(-1,"操作失败");
 		}
-		setSessionPara("defSuffix", null);
+		removeSessionPara("defSuffix");
 		return new MsgEntity(0,"操作成功");
 	}
 	
