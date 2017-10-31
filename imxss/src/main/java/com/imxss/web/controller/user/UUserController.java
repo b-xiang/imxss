@@ -76,10 +76,9 @@ public class UUserController extends BaseController {
 			num = 0;
 		}
 		if (num != null && num > 10) {
-			LocalCache.setCache(loginKey, num + 1, 60);
 			return new MsgEntity(-1, "登录过于频繁");
 		}
-		LocalCache.setCache(loginKey, num + 1);
+		LocalCache.setCache(loginKey, num + 1,60);
 		UserInfo userInfo = userService.loadUserInfo(email);
 		if (userInfo == null) {
 			return new MsgEntity(-1, "用户不存在");
