@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.coody.framework.context.annotation.LogHead;
 import org.coody.framework.core.controller.BaseController;
 import org.coody.framework.core.thread.XssThreadHandle;
 import org.coody.framework.util.EmailSenderUtil;
@@ -89,6 +90,7 @@ public class XssController extends BaseController {
 	}
 
 	@RequestMapping(value = { "api_{id:\\d+}" })
+	@LogHead("接受信封")
 	public void api(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id) {
 		try {
 			Map<String, String> paraMap = getParas();
