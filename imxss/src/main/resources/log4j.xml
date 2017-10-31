@@ -70,9 +70,7 @@
             <param name="AcceptOnMatch" value="true" />     
         </filter>			
 	</appender>
-	<logger name="com.app.server">
-         <level value="INFO" />
-    </logger>
+
 	<root>
 		<!--定义日志的最低输出级别-->
 		<priority value="INFO"/>
