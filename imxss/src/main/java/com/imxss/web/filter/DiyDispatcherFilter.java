@@ -72,6 +72,11 @@ public class DiyDispatcherFilter extends DispatcherServlet implements Filter {
 			res.sendRedirect(basePath + "install/install.jsp");
 			return;
 		}
+		String uri=RequestUtil.getRequestUri(req);
+		if(uri.startsWith("/s/")){
+			doSpringMvc(req, res);
+			return;
+		}
 		SuffixService suffixService = SpringContextHelper.getBean(SuffixService.class);
 		List<String> suffixs = suffixService.loadSpringSuffixs();
 		List<String> staList = suffixService.loadStaSuffix();
@@ -87,9 +92,7 @@ public class DiyDispatcherFilter extends DispatcherServlet implements Filter {
 			req.getSession().setAttribute("defSuffix", defSuffix);
 		}
 		if (suffixs.contains(suffix)) {
-			loadBasePath(req);
-			loadSetting(req);
-			service(new XssHttpServletRequestWrapper(req), res);
+			doSpringMvc(req, res);
 			return;
 		}
 		req.getRequestDispatcher("/WEB-INF/view/404.jsp").forward(request, response);
@@ -97,6 +100,12 @@ public class DiyDispatcherFilter extends DispatcherServlet implements Filter {
 		return;
 	}
 
+	private void doSpringMvc(HttpServletRequest req,HttpServletResponse res ) throws ServletException, IOException{
+		loadBasePath(req);
+		loadSetting(req);
+		service(new XssHttpServletRequestWrapper(req), res);
+		return;
+	}
 	private void loadSetting(HttpServletRequest request) {
 		SettingService settingService = SpringContextHelper.getBean(SettingService.class);
 		SettingInfo setting = settingService.loadSiteSetting();
