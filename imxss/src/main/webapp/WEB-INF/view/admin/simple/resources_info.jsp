@@ -381,8 +381,8 @@ hr, ol, p, pre, ul {
 	margin-bottom: 1px;
 }
 
-body, pre {
-	line-height: 1.0;
+.tpl-content-wrapper {
+	line-height: 1.0!important;
 }
 
 .note {
