@@ -58,8 +58,12 @@ public class WallFilter implements Filter {
 		if(StringUtil.isNullOrEmpty(num)){
 			num=0;
 		}
+		if(num==-1){
+			logger.info("IP:"+ip+"在系统黑名单，已禁止访问");
+			return false;
+		}
 		if(num>=300){
-			LocalCache.setCache(key, num+1,60*60*24);
+			LocalCache.setCache(key, -1,60*60*24);
 			logger.info("IP:"+ip+"在系统黑名单，已禁止访问");
 			//销毁session
 			request.getSession().invalidate();
