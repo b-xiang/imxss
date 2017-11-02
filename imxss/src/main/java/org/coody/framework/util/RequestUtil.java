@@ -70,9 +70,6 @@ public class RequestUtil {
 	public static String getIpAddr(HttpServletRequest request) {
 		String ip = request.getHeader("X-Real-IP");
 		if (StringUtil.isNullOrEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("Real-IP");
-		}
-		if (StringUtil.isNullOrEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getHeader("X-Forwarded-For");
 		}
 		if (!StringUtil.isNullOrEmpty(ip) && !"unknown".equalsIgnoreCase(ip)) {
