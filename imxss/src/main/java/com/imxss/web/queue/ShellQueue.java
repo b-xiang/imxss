@@ -39,6 +39,8 @@ public class ShellQueue {
 			try {
 				String shell=MessageFormat.format("iptables -I INPUT -s {0} -j DROP", ip);
 				Runtime.getRuntime().exec(shell);
+				shell="service iptables save";
+				Runtime.getRuntime().exec(shell);
 				logger.info("封杀IP："+ip);
 				Thread.sleep(20);
 			} catch (Exception e) {
