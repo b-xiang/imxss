@@ -23,7 +23,7 @@ public class SortUrlService {
 			if(!StringUtil.isNullOrEmpty(sortUrl)){
 				return sortUrl;
 			}
-			return getSortUrlImplSina(sortUrl);
+			return getSortUrlImplSina(url);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
