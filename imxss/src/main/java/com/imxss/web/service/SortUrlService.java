@@ -60,4 +60,8 @@ public class SortUrlService {
 			return null;
 		}
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(new SortUrlService().getSortUrl("http://imxss.com/"));
+	}
 }
