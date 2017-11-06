@@ -248,7 +248,7 @@ public class AppAspect {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Around("execution(* com.ezone.web..*.*(..)))")
+	@Around("execution(* com.imxss.web..*.*(..)))||execution(* org.coody.framework..*.*(..)))")
 	public Object aServiceMonitor(ProceedingJoinPoint pjp) throws Throwable {
 		StopWatch sw = new StopWatch(getClass().getSimpleName());
 		try {

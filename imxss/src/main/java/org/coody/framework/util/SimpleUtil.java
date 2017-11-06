@@ -26,6 +26,7 @@ import org.coody.framework.context.entity.CtAnnotationEntity;
 import org.coody.framework.context.entity.CtBeanEntity;
 import org.coody.framework.context.entity.CtClassEntity;
 import org.coody.framework.context.entity.CtMethodEntity;
+import org.springframework.cglib.proxy.MethodProxy;
 
 import com.alibaba.fastjson.JSON;
 
@@ -389,7 +390,7 @@ public class SimpleUtil {
 	}
 
 	static List<Class<?>> generalTypes=Arrays.asList(new Class<?>[]{boolean.class,byte.class,char.class,short.class,int.class,float.class,long.class,double.class,
-			Integer.class,Float.class,Long.class,Double.class,Short.class,Byte.class,Boolean.class,String.class,Date.class,Number.class,Enum.class});
+			Integer.class,Float.class,Long.class,Double.class,Short.class,Byte.class,Boolean.class,String.class,Date.class,Number.class,Enum.class,MethodProxy.class});
 	
 	public static boolean isSignType(Class<?> clazz){
 		if(clazz.isArray()){
