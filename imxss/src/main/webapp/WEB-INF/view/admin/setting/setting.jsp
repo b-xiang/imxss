@@ -41,7 +41,7 @@
 									</label>
 									<div class="am-u-sm-9">
 										<input type="text" class="tpl-form-input" id="user-name"
-											minlength="3" maxlength="16" name="siteName"
+											minlength="3" maxlength="64" name="siteName"
 											value="${setting.siteName }">
 									</div>
 								</div>
@@ -50,7 +50,7 @@
 									</label>
 									<div class="am-u-sm-9">
 										<input type="text" class="tpl-form-input" id="user-name"
-											minlength="3" maxlength="16" name="keywords"
+											minlength="3" maxlength="128" name="keywords"
 											value="${setting.keywords }">
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 									</label>
 									<div class="am-u-sm-9">
 										<input type="text" class="tpl-form-input" id="user-name"
-											minlength="3" maxlength="16" name="description"
+											minlength="3" maxlength="256" name="description"
 											value="${setting.description }">
 									</div>
 								</div>
@@ -68,7 +68,7 @@
 									</label>
 									<div class="am-u-sm-9">
 										<input type="text" class="tpl-form-input" id="user-name"
-											minlength="3" maxlength="16" name="copyright"
+											minlength="3" maxlength="64" name="copyright"
 											value="${setting.copyright }">
 									</div>
 								</div>
