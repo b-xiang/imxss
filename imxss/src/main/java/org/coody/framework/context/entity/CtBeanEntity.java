@@ -83,10 +83,14 @@ public class CtBeanEntity extends BaseModel{
 	}
 	public void setFieldValue(Object fieldValue) {
 		if(!StringUtil.isNullOrEmpty(fieldValue)){
-			if(SimpleUtil.isSignType(fieldValue.getClass())){
-				stringValue=fieldValue.toString();
-			}else{
-				stringValue=JSON.toJSONString(fieldValue);
+			try {
+				if(SimpleUtil.isSignType(fieldValue.getClass())){
+					stringValue=fieldValue.toString();
+				}else{
+					stringValue=JSON.toJSONString(fieldValue);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		this.fieldValue = fieldValue;
