@@ -182,5 +182,9 @@
 .tpl-table-images-content .tpl-i-more li {
 	text-align: left;
 }
+.am-u-lg-4 {
+    width: 33%!important;
+    height: 295px!important;
+}
 </style>
 </html>
