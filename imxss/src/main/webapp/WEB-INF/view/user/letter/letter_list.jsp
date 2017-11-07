@@ -100,7 +100,7 @@
 											</div>
 
 											<div class="tpl-table-images-content-block">
-												<div class="tpl-i-font ">${letter.ip }${letter.ipInfo }</div>
+												<div class="tpl-i-font ">${letter.ip }<br />${letter.ipInfo }</div>
 												<div class="tpl-i-more">
 													<ul>
 														<li><span style="white-space:nowrap;"
@@ -186,5 +186,4 @@
     width: 33%!important;
     height: 295px!important;
 }
-</style>
-</html>
+</style></html>
