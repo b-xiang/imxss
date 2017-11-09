@@ -42,12 +42,31 @@
 								</div>
 							</div>
 							<!-- 搜索 -->
+							<div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <span>&nbsp; </span>
+                                </div>
+                            </div>
+                        </div>
+							<div class="am-u-sm-12 am-u-md-3">
+									<div class="am-form-group">
+										<select data-am-selected="{btnSize: 'sm'}"
+											style="display: none;" name="projectId">
+											<option value="0">所有项目</option>
+											<c:forEach items="${projects }" var="project">
+												<option value="${project.id }" ${project.id==projectId?'selected':'' }>${project.title }</option>
+											</c:forEach>
+										</select>
+										
+									</div>
+								</div>
 							<div class="am-u-sm-12 am-u-md-3">
 								<div class="am-input-group am-input-group-sm">
 									<input type="text" class="am-form-field" name="keyWorld"
 										placeholder="输入关键字搜索" value="${keyWorld }"> <span
 										class="am-input-group-btn">
-										<button
+										<button style="float: left"
 											class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search"
 											type="submit"></button>
 									</span>
@@ -72,7 +91,7 @@
 												<c:if test="${letter.isReaded==1 }">
 													<span class="am-badge  am-round">已读</span>
 												</c:if>
-												<a href="#">&nbsp;<fmt:formatDate
+												<a href="letterInfo.${defSuffix}?letterId=${letter.id }">&nbsp;<fmt:formatDate
 														value="${letter.updateTime }"
 														pattern="yyyy-MM-dd HH:mm:ss" /></a>
 											</div>
@@ -81,17 +100,12 @@
 											</div>
 
 											<div class="tpl-table-images-content-block">
-												<div class="tpl-i-font ">${letter.ip }<br/>${letter.ipInfo }</div>
+												<div class="tpl-i-font ">${letter.ip }<br />${letter.ipInfo }</div>
 												<div class="tpl-i-more">
 													<ul>
 														<li><span style="white-space:nowrap;"
 															class="am-icon-envelope am-text-warning">
 																${letter.projectName==null?'(已删除)':letter.projectName }</span></li>
-													</ul>
-													<ul>
-														<li><span style="white-space:nowrap;"
-															class="am-icon-user am-text-warning">
-																${letter.userEmail }</span></li>
 													</ul>
 												</div>
 												<div class="am-btn-toolbar">
@@ -172,5 +186,4 @@
     width: 33%!important;
     height: 295px!important;
 }
-</style>
-</html>
+</style></html>
