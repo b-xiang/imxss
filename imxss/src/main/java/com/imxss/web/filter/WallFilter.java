@@ -11,7 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.coody.framework.context.base.BaseLogger;
-import org.coody.framework.context.wrapper.XssHttpServletRequestWrapper;
 import org.coody.framework.core.cache.LocalCache;
 import org.coody.framework.util.RequestUtil;
 import org.coody.framework.util.StringUtil;
@@ -46,7 +45,7 @@ public class WallFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		if(doWall(request)){
 			//过滤Xss跨站脚本攻击
-			chain.doFilter(new XssHttpServletRequestWrapper(request), resp);
+			chain.doFilter(req, resp);
 		}
 	}
 	//拦截CC攻击
