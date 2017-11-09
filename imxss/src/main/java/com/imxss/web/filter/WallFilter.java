@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.coody.framework.context.base.BaseLogger;
+import org.coody.framework.context.wrapper.XssHttpServletRequestWrapper;
 import org.coody.framework.core.cache.LocalCache;
 import org.coody.framework.util.RequestUtil;
 import org.coody.framework.util.StringUtil;
@@ -43,7 +44,7 @@ public class WallFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
-		if(doWall(request)){
+		if(doWall(new XssHttpServletRequestWrapper(request))){
 			//过滤Xss跨站脚本攻击
 			chain.doFilter(req, resp);
 		}
