@@ -44,9 +44,9 @@ public class WallFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
-		if(doWall(new XssHttpServletRequestWrapper(request))){
+		if(doWall(request)){
 			//过滤Xss跨站脚本攻击
-			chain.doFilter(req, resp);
+			chain.doFilter(new XssHttpServletRequestWrapper(request), resp);
 		}
 	}
 	//拦截CC攻击
